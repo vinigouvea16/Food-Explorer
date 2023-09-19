@@ -14,7 +14,7 @@ export const Container = styled.div`
  .splide__arrow {
     -ms-flex-align: center;
     align-items: center;
-    background: ${({theme})=> theme.COLORS.GRADIENTS.G100};
+    /* background: ${({theme})=> theme.COLORS.GRADIENTS.G100}; */
     cursor: pointer;
     display: -ms-flexbox;
     display: flex;
@@ -28,6 +28,14 @@ export const Container = styled.div`
     transform: translateY(-50%);
     width: 6em;
     z-index: 1;
+}
+.splide__arrow--prev{
+  left: 0;
+  background: ${({theme})=> theme.COLORS.GRADIENTS.G150};
+}
+.splide__arrow--next{
+  right: 0;
+  background: ${({theme})=> theme.COLORS.GRADIENTS.G100};
 }
 .splide__arrow{
   border-radius: 0%;

@@ -4,13 +4,15 @@ import {Footer} from '../../components/Footer'
 import {Section} from '../../components/Section'
 import {Ingredients} from '../../components/Tag'
 import { Button } from "../../components/Button"
-import { NewIngredient } from "../../components/NewIngredient"
-import { InputLogin } from "../../components/InputLogin"
 import { InputDish } from "../../components/InputDish"
 import { InputIng } from "../../components/InputIng"
 import { Textarea } from "../../components/Textarea"
 import {Select} from "../../components/Select"
 import {InputCurrency} from "../../components/CurrencyInput"
+import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
+import { api } from "../../services/api"
+import { NewIngredient } from "../../components/NewIngredient"
 
 function NewDish() {
   const options = [
@@ -18,18 +20,63 @@ function NewDish() {
     { value: 'Sobremesas', label: 'Sobremesas'},
     { value: 'Bebidas', label: 'Bebidas'}
   ]
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const navigate = useNavigate();
+  const [ingredients, setIngredients] = useState([]);
+  const [newIngredient, setNewIngredient] = useState("");
+
+  function handleAddTag(){
+    setIngredients(prevState => [...prevState, newIngredient]);
+    setNewIngredient("");
+  }
+  function handleRemoveTag(deleted){
+    setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted));
+  }
+
+  async function handleNewPlate(){
+    if(!name){
+      return alert("Insira o nome do prato")
+    }
+    if(!description){
+      return alert("Insira descrição do prato")
+    }
+    // if(!price){
+    //   return alert("Estipule o valor do prato")
+    // }
+    // if(newTag){
+    //   return alert("Parece que você esqueceu de adicionar um dos ingredientes, clique para adicionar, ou remova-o")
+    // }
+    console.log('oi')
+    await api.post("/dishes", {
+      name,
+      image,
+      description,
+      price,
+      ingredients
+    })
+    alert("Prato cadastrado com sucesso!");
+    navigate(-1)
+  }
+
+  const [dishFile, setDishFile] = useState(null);
+  function handleDishImg(event){
+    const file = event.target.files[0];
+    setDishFile(file);
+  }
+  
   return (
     <Container>
       <Header />
       <Content>
-      <a href="#">
+      <Link to="/">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7071 5.29289C21.0976 5.68342 21.0976 6.31658 20.7071 6.70711L11.4142 16L20.7071 25.2929C21.0976 25.6834 21.0976 26.3166 20.7071 26.7071C20.3166 27.0976 19.6834 27.0976 19.2929 26.7071L9.29289 16.7071C8.90237 16.3166 8.90237 15.6834 9.29289 15.2929L19.2929 5.29289C19.6834 4.90237 20.3166 4.90237 20.7071 5.29289Z" fill="white"/>
           </svg>
         Voltar
-      </a>
-
-      <header>
+      </Link>
+    <header>
         <h1>Adicionar prato</h1>
       </header>
       
@@ -46,13 +93,15 @@ function NewDish() {
           <input 
           type="file"
           id="avatar"
+          onChange={handleDishImg}
           />
           </label>
         </div>
         <div className='label' id="name"><span>Nome</span>
         <InputDish 
-        placeholder="Ex.:Salada Ceaser"
+        placeholder="Ex.:Salada Ceasar"
         type="text"
+        onChange={e => setName(e.target.value)}
         />
         </div>
         <div className='label'><span>Categoria</span>
@@ -61,25 +110,47 @@ function NewDish() {
       </div>
 
       <div className="twoInputs">
-      <div className='label'><span>Ingredientes</span>
-        <InputIng 
-        placeholder="No mínimo 6 caracteres"
-        type="text"
+      <div className='tags'><span>Ingredientes</span>
+          {/* <InputIng 
+          placeholder=""
+          type="text"
+          /> */}
+        <Section >
+          {   
+          ingredients.map((ingredient, index) => (
+            <NewIngredient 
+            key={String(index)}
+            value = {ingredient}
+            onClick={() => handleRemoveTag(ingredient)}
+            />
+            ))
+          }
+        <NewIngredient 
+        $isNew
+        placeholder = "Adicionar"
+        onChange = {e => setNewIngredient(e.target.value)}
+        value = {newIngredient}
+        onClick = {handleAddTag}
         />
+        </Section>
         </div>
         <div className='label'><span>Preços</span>
-        <InputCurrency />
+        <InputCurrency 
+        onChange={e => setPrice(e.target.value)}
+        />
         </div>
       </div>
       <div className='label'><span>Descrição</span>
        <Textarea
         placeholder= "Fale brevemente sobre o prato, seus ingredientes e composição"
+        onChange={e => setDescription(e.target.value)}
        />
         </div>
        
         <Button 
-        loading
+        // loading
         title="Salvar Alterações"
+        onClick = {handleNewPlate}
         />
       </Form>
       </Content>

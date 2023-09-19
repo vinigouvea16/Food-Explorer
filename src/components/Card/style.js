@@ -18,9 +18,6 @@ export const Container = styled.div`
   font-weight: 700;
   line-height: 140%;
   }
-  >section img{
-    height: 176px;
-  }
   >span{
     padding: 2px;
     font-size: 24px;
@@ -32,9 +29,6 @@ export const Container = styled.div`
     font-weight: 400;
     line-height: 160%;
     align-items: center;
-  }
-  .mainImg{
-  background: ${({theme})=> theme.COLORS.GRADIENTS.G200};
   }
 `
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 export const Container = styled.div`
-  height: 100vh;
+  height: 90vh;
   display: flex;
   align-items: center;
   margin-right: 108px;
@@ -58,6 +58,9 @@ export const Background = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  >svg{
+  margin-right: 19px;
+}
   h1{
     color: ${({theme})=> theme.COLORS.LIGHT.L100};
     font-size: 42px;

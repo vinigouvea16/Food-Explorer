@@ -7,6 +7,7 @@ export function Button({
   hasIcon = false, 
   isText = false, 
   icon: Icon, 
+  price,
   ...rest
 }){
   return(
@@ -18,6 +19,7 @@ export function Button({
   >
     {hasIcon && <PiReceiptBold/>}
     {title}
+    {price ? ` ∙ R$ ${price}` : ''}
   </Container>
     )
 }

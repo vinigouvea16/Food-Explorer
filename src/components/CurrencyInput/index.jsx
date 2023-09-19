@@ -14,7 +14,7 @@ export function InputCurrency(){
     prefix = "R$ "
     defaultValue={""}
     decimalsLimit={4}
-    onValueChange={(value, name)=> console.log(value,name)}
+    // onValueChange={(value, name)=> console.log(value,name)}
     />
   </Container>
     )

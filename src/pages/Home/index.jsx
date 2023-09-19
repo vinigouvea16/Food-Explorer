@@ -3,10 +3,11 @@ import {Container, Content} from "./style"
 import {Header} from '../../components/Header'
 import {Footer} from '../../components/Footer'
 import {Card} from '../../components/Card'
-import { MyCarousel } from "../../components/Splider"
+import { MyCarousel } from "../../components/MyCarousel"
+import { useNavigate } from "react-router-dom"
 
 
-function Details() {
+function Home() {
 
   return (
     <Container>
@@ -44,4 +45,4 @@ function Details() {
   )
 }
 
-export default Details
+export default Home

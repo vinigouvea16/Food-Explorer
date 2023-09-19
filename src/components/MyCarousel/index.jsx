@@ -3,7 +3,7 @@ import Splide from '@splidejs/splide';
 import { useEffect } from "react";
 import {Container, Heart} from './style'
 import { Button } from '../Button';
-import {Card} from '../../components/Card'
+import {Card} from '../Card'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 

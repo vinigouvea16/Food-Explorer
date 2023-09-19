@@ -23,6 +23,7 @@ export default {
     },
     GRADIENTS:{
       G100: 'linear-gradient(90deg, rgba(0, 10, 15, 0.27)0%, #000a0F 100%)',
+      G150: 'linear-gradient(180deg, rgba(0, 10, 15, 0.27)0%, #000a0F 100%)',
       G200: 'linear-gradient(180deg, #091e26 0%, #00131C 100%)',
     },
     COLORS:{

@@ -3,15 +3,17 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   align-items: center;
-
+  width: 240px;
   background-color: ${({theme, $isNew})=> $isNew ? "transparent" : theme.COLORS.LIGHT.L600};
   color: ${({theme})=> theme.COLORS.LIGHT.L500};
 
-  border: ${({theme, $isNew}) => $isNew ? `2px dashed ${theme.COLORS.LIGHT.L500}` : "none"};
+  border: ${({theme, $isNew}) => $isNew ? `1px dashed ${theme.COLORS.LIGHT.L500}` : "none"};
  
   margin: 8px;
-  border-radius: 10px;
-  padding-right: 16px;
+  border-radius: 8px;
+  /* padding-right: 16px; */
+  /* margin-right: 16px; */
+
 
   >button {
     border: none;
@@ -19,7 +21,7 @@ export const Container = styled.div`
   }
   
     .button-delete{
-      color: ${({theme})=> theme.COLORS.LIGHT.L500};
+      color: ${({theme})=> theme.COLORS.LIGHT.L100};
     }
   
     .button-add{
@@ -27,9 +29,9 @@ export const Container = styled.div`
     }
   
   >input{
-    height: 56px;
-
-    padding: 12px;
+    margin-left: 16px;
+    width: fit-content;
+    padding: 8px;
     color: ${({theme})=> theme.COLORS.LIGHT.L400};
     background: transparent;
 

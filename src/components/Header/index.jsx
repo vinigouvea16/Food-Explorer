@@ -2,8 +2,16 @@ import {Container, Logout, Brand} from './style'
 import {GoSignOut} from 'react-icons/go'
 import {Input} from '../Input'
 import {Button} from '../../components/Button'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../hooks/auth'
 
 export function Header(){
+  const { logOut, user } = useAuth();
+  const navigate = useNavigate();
+  function handleLogOut(){
+    navigate('/')
+    logOut();
+  }
   return(
     <Container>
       <div>
@@ -16,7 +24,9 @@ export function Header(){
       hasIcon
       title="Pedidos (0)"
       />
-      <Logout>
+      <Logout
+      onClick={handleLogOut}
+      >
         <GoSignOut />
       </Logout>
       </div>
