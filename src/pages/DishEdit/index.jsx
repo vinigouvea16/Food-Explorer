@@ -4,21 +4,91 @@ import {Footer} from '../../components/Footer'
 import {Section} from '../../components/Section'
 import {Ingredients} from '../../components/Tag'
 import { Button } from "../../components/Button"
-import { NewIngredient } from "../../components/NewIngredient"
-import { InputLogin } from "../../components/InputLogin"
 import { InputDish } from "../../components/InputDish"
 import { InputIng } from "../../components/InputIng"
 import { Textarea } from "../../components/Textarea"
 import {Select} from "../../components/Select"
 import {InputCurrency} from "../../components/CurrencyInput"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
+import { api } from "../../services/api"
+import { NewIngredient } from "../../components/NewIngredient"
+import { useAuth } from "../../hooks/auth"
 
-function NewDish() {
+function DishEdit() {
   const options = [
     { value: 'Refeições', label: 'Refeições'},
     { value: 'Sobremesas', label: 'Sobremesas'},
     { value: 'Bebidas', label: 'Bebidas'}
   ]
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
+  const navigate = useNavigate();
+  const [ingredients, setIngredients] = useState([]);
+  const [newIngredient, setNewIngredient] = useState("");
+  function handleAddTag(){
+    setIngredients(prevState => [...prevState, newIngredient]);
+    setNewIngredient("");
+  }
+  function handleRemoveTag(deleted){
+    setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted));
+  }
+
+  async function handleNewPlate(){
+    if(!name){
+      return alert("Insira o nome do prato")
+    }
+    if(!description){
+      return alert("Insira descrição do prato")
+    }
+    // if(!price){
+    //   return alert("Estipule o valor do prato")
+    // }
+    if(!category){
+      return alert("Estipule uma categoria para o prato")
+    }
+    if(newIngredient){
+      return alert("Parece que você esqueceu de adicionar um dos ingredientes, clique para adicionar, ou remova-o")
+    }
+
+    await api.post("/dishes", {
+      name,
+      // image,
+      description,
+      price,
+      ingredients,
+      category,
+    },{})
+    alert("Prato cadastrado com sucesso!");
+    navigate(-1)
+  }
+
+  const [dishFile, setDishFile] = useState(null);
+  function handleDishImg(event){
+    const file = event.target.files[0];
+    setDishFile(file);
+  }
+
+  const {dish, updateDish} = useAuth();
+  async function handleUpdate(){
+    const updated = {
+      name,
+      description,
+      price,
+      category,
+      image
+    }
+    const dishUpdated = Object.assign(dish, updated)
+  await updateDish({dish: dishUpdated, dishFile});
+  }
+  // function handleChangeImage(event){
+  //   const file = event.target.files[0]
+  //   set
+  // }
+
+
   return (
     <Container>
       <Header />
@@ -29,8 +99,7 @@ function NewDish() {
           </svg>
         Voltar
       </Link>
-
-      <header>
+    <header>
         <h1>Adicionar prato</h1>
       </header>
       
@@ -47,36 +116,65 @@ function NewDish() {
           <input 
           type="file"
           id="avatar"
+          onChange={handleDishImg}
           />
           </label>
         </div>
         <div className='label' id="name"><span>Nome</span>
         <InputDish 
-        placeholder="Ex.:Salada Ceaser"
+        placeholder="Ex.:Salada Ceasar"
         type="text"
+        onChange={e => setName(e.target.value)}
         />
         </div>
         <div className='label'><span>Categoria</span>
-       <Select options={options}/>
+       <Select 
+       options={options}
+       value={category}
+       onChange={e => setCategory(e.target.value)}
+       />
         </div>
       </div>
 
       <div className="twoInputs">
-      <div className='label'><span>Ingredientes</span>
-        <InputIng 
-        placeholder="No mínimo 6 caracteres"
-        type="text"
+      <div className='tags'><span>Ingredientes</span>
+          {/* <InputIng 
+          placeholder=""
+          type="text"
+          /> */}
+        <Section >
+          {   
+          ingredients.map((ingredient, index) => (
+            <NewIngredient 
+            key={String(index)}
+            value = {ingredient}
+            onClick={() => handleRemoveTag(ingredient)}
+            />
+            ))
+          }
+        <NewIngredient 
+        $isNew
+        placeholder = "Adicionar"
+        onChange = {e => setNewIngredient(e.target.value)}
+        value = {newIngredient}
+        onClick = {handleAddTag}
         />
+        </Section>
         </div>
         <div className='label'><span>Preços</span>
-        <InputCurrency />
+        <InputCurrency 
+        type="number"
+        onChange={e => setPrice(e.target.value)}
+        />
         </div>
       </div>
       <div className='label'><span>Descrição</span>
        <Textarea
         placeholder= "Fale brevemente sobre o prato, seus ingredientes e composição"
+        onChange={e => setDescription(e.target.value)}
        />
         </div>
+        
         <div className="buttons">
         <Button 
         $isText
@@ -85,6 +183,7 @@ function NewDish() {
         <Button 
         loading
         title="Salvar Alterações"
+        onClick={handleUpdate}
         />
         </div>
       </Form>
@@ -94,4 +193,4 @@ function NewDish() {
   )
 }
 
-export default NewDish
+export default DishEdit

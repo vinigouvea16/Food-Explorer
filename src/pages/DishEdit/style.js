@@ -100,6 +100,22 @@ export const Form = styled.form`
     line-height: 160%;
     padding-left: 14px;
   }
+  Section{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    background: #0d1d25;
+    /* padding: 4px; */
+    border-radius: 8px;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  .tags{
+    display: flex;
+    width: 835px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
  
 `;
 

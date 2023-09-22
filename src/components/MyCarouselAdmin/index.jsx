@@ -2,15 +2,12 @@ import { ArrowRightIcon } from '@radix-ui/react-icons'
 import Splide from '@splidejs/splide'
 import '@splidejs/splide/css'
 import { useEffect } from 'react'
-import { Card } from '../Card'
+import { CardAdmin } from '../CardAdmin'
 import { Container } from './style'
 
-export function MyCarousel({
-  data,
-  // category = { refeições, sobremesas, bebidas },
-  ...rest
-}) {
+export function MyCarouselAdmin({ data, ...rest }) {
   const id = crypto.randomUUID()
+
   useEffect(() => {
     new Splide(`#splide${id}`, {
       autoWidth: true,
@@ -33,7 +30,10 @@ export function MyCarousel({
       focus: 'center',
       updateOnMove: true,
     }).mount()
-  }, [data, id])
+  }, [
+    // data,
+    id,
+  ])
   return (
     <Container>
       <section
@@ -51,29 +51,18 @@ export function MyCarousel({
         </div>
         <div className="splide__track">
           <ul className="splide__list">
-            {data.length &&
-              data.map((dish) => (
-                <li key={dish.id} className="splide__slide">
-                  <Card
-                    key={dish.id}
-                    title={dish.name}
-                    description={dish.description}
-                    price={dish.price}
-                    // image={dish.image}
-                    categoy={dish.category}
-                    id={dish.id}
-                  />
-                </li>
-              ))}
-            {/* <li className="splide__slide">
-              <Card />
+            <li className="splide__slide">
+              <CardAdmin />
             </li>
             <li className="splide__slide">
-              <Card />
+              <CardAdmin />
             </li>
             <li className="splide__slide">
-              <Card />
-            </li> */}
+              <CardAdmin />
+            </li>
+            <li className="splide__slide">
+              <CardAdmin />
+            </li>
           </ul>
         </div>
       </section>

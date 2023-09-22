@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export const Container = styled.div`
   display: flex;
@@ -10,24 +10,20 @@ export const Container = styled.div`
   justify-content: center;
   position: relative;
   gap: 15px;
-  background-color: ${({ theme }) => theme.COLORS.DARK.D200};
+  background-color: ${({theme})=> theme.COLORS.DARK.D200};
   margin-right: 25px;
-  > p {
-    overflow: hidden;
-    text-align: center;
+  >h4{
+  font-size: 24px;
+  font-family: Poppins;
+  font-weight: 700;
+  line-height: 140%;
   }
-  > h4 {
-    font-size: 24px;
-    font-family: Poppins;
-    font-weight: 700;
-    line-height: 140%;
-  }
-  > span {
+  >span{
     padding: 2px;
     font-size: 24px;
   }
-  h5 {
-    color: ${({ theme }) => theme.COLORS.COLORS.CAKE_200};
+  h5{
+    color: ${({theme})=> theme.COLORS.COLORS.CAKE_200};
     font-family: Roboto;
     font-size: 32px;
     font-weight: 400;
@@ -36,7 +32,8 @@ export const Container = styled.div`
   }
 `
 
-export const Heart = styled.button`
+
+export const Pencil = styled.button`
   width: 24px;
   height: 22px;
   position: absolute;
@@ -44,11 +41,11 @@ export const Heart = styled.button`
   top: 16px;
   background-color: transparent;
   border: none;
-
-  &:hover {
+  
+  &:hover{
     scale: 1.2;
-    > svg path {
-      stroke: ${({ theme }) => theme.COLORS.COLORS.TOMATO_200};
-    }
+  >svg path{
+    stroke: ${({theme})=> theme.COLORS.COLORS.MINT_100};
+  }
   }
 `

@@ -36,7 +36,7 @@ export const Logout = styled.button`
 `
 export const Brand = styled.div`
   color: ${({theme})=> theme.COLORS.LIGHT.L100};
-  background-image: url("/assets/logo.png");
+  background-image: url("/assets/logoadmin.png");
   background-repeat: no-repeat;
   width: 197px;
   height: 30px;
