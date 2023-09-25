@@ -5,6 +5,7 @@ import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Section } from '../../components/Section'
 import { Ingredients } from '../../components/Tag'
+import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
 import { Container, Content } from './style'
 
@@ -12,13 +13,28 @@ function Dish() {
   const [data, setData] = useState(null)
   const params = useParams()
 
+  const { dish, updateDish } = useAuth()
+
   useEffect(() => {
     async function fetchDish() {
-      const response = await api.get(`/dishes/${params.id}`)
-      setData(response.data)
+      try {
+        const response = await api.get(`/dishes/${params.id}`)
+        setData(response.data)
+      } catch (error) {
+        console.error('Error fetching dish data', error)
+      }
     }
     fetchDish()
   }, [params.id])
+
+  // useEffect(() => {
+  //   async function getData() {
+  //     const { data } = await api.get(`/dishes/${params.id}`)
+  //     setData(data)
+  //   }
+  //   getData()
+  // }, [])
+
   return (
     <Container>
       <Header />
@@ -42,7 +58,7 @@ function Dish() {
             Voltar
           </Link>
           <Content>
-            <img src="/assets/ravanello.png" alt="" />
+            <img src={`${api.defaults.baseURL}/files/${data.image}`} alt="" />
             <section>
               <h1>{data.name}</h1>
               <p>{data.description}</p>

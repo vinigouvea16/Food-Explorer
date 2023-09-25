@@ -54,20 +54,31 @@ function NewDish() {
       )
     }
 
-    await api.post(
-      '/dishes',
-      {
-        name,
-        // image,
-        description,
-        price,
-        ingredients,
-        category,
-      },
-      {},
-    )
-    alert('Prato cadastrado com sucesso!')
-    navigate(-1)
+    try {
+      const response = await api.post(
+        '/dishes',
+        {
+          name,
+          // image,
+          description,
+          price,
+          ingredients,
+          category,
+        },
+        {},
+      )
+      console.log(response)
+      if (dishFile) {
+        const form = new FormData()
+        form.append('plateimg', dishFile)
+        await api.patch(`/dishes/plateimg/${response.data.dish_id}`, form)
+      }
+
+      alert('Prato cadastrado com sucesso!')
+      navigate(-1)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const [dishFile, setDishFile] = useState(null)

@@ -1,13 +1,37 @@
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { api } from '../../services/api'
 import { Button } from '../Button'
 import { Container, Heart } from './style'
-export function Card({ title, description, price, id, category, ...rest }) {
-  // const [data, setData] = useState(null);
+export function Card({
+  title,
+  description,
+  price,
+  id,
+  category,
+  image,
+  ...rest
+}) {
+  const [data, setData] = useState(null)
+  const params = useParams()
 
   const navigate = useNavigate()
   function handleDish(id) {
     navigate(`/dishes/${id}`)
   }
+
+  useEffect(() => {
+    async function fetchDish() {
+      try {
+        const response = await api.get(`/dishes/${params.id}`)
+        setData(response.data)
+      } catch (error) {
+        console.error('Error fetching dish data', error)
+      }
+    }
+    fetchDish()
+  }, [params.id])
+
   return (
     <Container>
       <Heart>
@@ -27,7 +51,11 @@ export function Card({ title, description, price, id, category, ...rest }) {
           />
         </svg>
       </Heart>
-      <img src="/assets/gambe.png" alt="" onClick={() => handleDish(id)} />
+      <img
+        src={`${api.defaults.baseURL}/files/${image}`}
+        alt=""
+        onClick={() => handleDish(id)}
+      />
       <h4>{title} &gt; </h4>
       <p> {description}</p>
       <h5>R$ {price}</h5>

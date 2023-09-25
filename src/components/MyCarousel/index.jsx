@@ -5,11 +5,7 @@ import { useEffect } from 'react'
 import { Card } from '../Card'
 import { Container } from './style'
 
-export function MyCarousel({
-  data,
-  // category = { refeições, sobremesas, bebidas },
-  ...rest
-}) {
+export function MyCarousel({ data, category, ...rest }) {
   const id = crypto.randomUUID()
   useEffect(() => {
     new Splide(`#splide${id}`, {
@@ -59,8 +55,8 @@ export function MyCarousel({
                     title={dish.name}
                     description={dish.description}
                     price={dish.price}
-                    // image={dish.image}
-                    categoy={dish.category}
+                    image={dish.image}
+                    // category={dish.category}
                     id={dish.id}
                   />
                 </li>
