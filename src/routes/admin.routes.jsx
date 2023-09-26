@@ -1,20 +1,20 @@
 import { Route, Routes } from 'react-router-dom'
 
 import Dish from '../pages/Dish'
+import DishAdmin from '../pages/DishAdmin'
 import DishEdit from '../pages/DishEdit'
-import Home from '../pages/Home'
+import HomeAdmin from '../pages/HomeAdmin'
 import NewDish from '../pages/NewDish'
-import OrderHistory from '../pages/OrderHistory'
 
-function AppRoutes() {
+function AdminRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<HomeAdmin />} />
       <Route path="/new" element={<NewDish />} />
-      <Route path="/history" element={<OrderHistory />} />
       <Route path="/edit/:id" element={<DishEdit />} />
+      <Route path="/dishes/:id" element={<DishAdmin />} />
       <Route path="/dishes/:id" element={<Dish />} />
     </Routes>
   )
 }
-export default AppRoutes
+export default AdminRoutes

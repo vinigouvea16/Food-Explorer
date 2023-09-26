@@ -10,34 +10,35 @@ export const Container = styled.header`
   margin: 0 auto;
   padding: 5px 123px;
   gap: 32px;
-  background-color: ${({theme}) => theme.COLORS.DARK.D600};
-  
-  >Button{
+  background-color: ${({ theme }) => theme.COLORS.DARK.D600};
+
+  > Button {
     max-width: 216px;
     height: 56px;
   }
-  div{
-  max-width: 1380px;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  padding: 5px 123px;
-  gap: 32px;
+  div {
+    max-width: 1380px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 5px 123px;
+    gap: 32px;
   }
 `
 export const Logout = styled.button`
   border: none;
   background: none;
-  >svg {
-    color: ${({theme}) => theme.COLORS.LIGHT.L100};
+  > svg {
+    color: ${({ theme }) => theme.COLORS.LIGHT.L100};
     font-size: 32px;
   }
 `
 export const Brand = styled.div`
-  color: ${({theme})=> theme.COLORS.LIGHT.L100};
-  background-image: url("/assets/logoadmin.png");
+  color: ${({ theme }) => theme.COLORS.LIGHT.L100};
+  background-image: url('/assets/logoadmin.png');
   background-repeat: no-repeat;
+  /* background-size: cover; */
   width: 197px;
   height: 30px;
   margin-right: 32px;

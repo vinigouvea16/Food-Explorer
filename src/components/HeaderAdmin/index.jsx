@@ -1,47 +1,34 @@
-import {Container, Logout, Brand} from './style'
-import {GoSignOut} from 'react-icons/go'
-import {Input} from '../Input'
-import {Button} from '../../components/Button'
+import { GoSignOut } from 'react-icons/go'
 import { useNavigate } from 'react-router-dom'
+import { Button } from '../../components/Button'
 import { useAuth } from '../../hooks/auth'
+import { Input } from '../Input'
+import { Brand, Container, Logout } from './style'
 
-export function HeaderAdmin(
-  {
- }
-){
-  const { logOut, user } = useAuth();
-  const navigate = useNavigate();
+export function HeaderAdmin() {
+  const { logOut, user } = useAuth()
+  const navigate = useNavigate()
 
-  function handleNewDish(id){
+  function handleNewDish({ id }) {
     navigate(`/new`)
   }
-  function handleLogOut(){
+  function handleLogOut() {
     navigate('/')
-    logOut();
+    logOut()
   }
 
-  function handleHome(){
+  function handleHome() {
     navigate('/')
   }
-  return(
+  return (
     <Container>
       <div>
-      <Brand 
-      onClick={handleHome}
-      />
-      <Input
-      placeholder="Busque por pratos ou ingredientes"
-      hasIcon
-      />
-      <Button 
-      onClick={handleNewDish}
-      title="Novo Prato"
-      />
-      <Logout
-      onClick={handleLogOut}
-      >
-        <GoSignOut />
-      </Logout>
+        <Brand onClick={handleHome} />
+        <Input placeholder="Busque por pratos ou ingredientes" hasIcon />
+        <Button onClick={handleNewDish} title="Novo Prato" />
+        <Logout onClick={handleLogOut}>
+          <GoSignOut />
+        </Logout>
       </div>
     </Container>
   )

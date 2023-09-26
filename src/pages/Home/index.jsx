@@ -39,13 +39,7 @@ function Home() {
     fetchData()
   }, [])
 
-  // Use the state variables within the component or in another useEffect callback.
-  // Avoid using them immediately after setting them, as they may not be updated yet.
-  useEffect(() => {
-    // console.log(drinks)
-    // console.log(desserts)
-    // console.log(meals)
-  }, [data])
+  useEffect(() => {}, [data])
 
   return (
     <Container>
