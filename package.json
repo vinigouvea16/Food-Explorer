@@ -13,6 +13,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.10",
+    "@phosphor-icons/react": "^2.0.13",
     "@radix-ui/react-icons": "^1.3.0",
     "@splidejs/splide": "^4.1.4",
     "axios": "^1.5.0",

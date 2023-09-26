@@ -8,10 +8,24 @@ export function Button({
   isText = false,
   icon: Icon,
   price,
+  onClick,
   ...rest
 }) {
+  const handleClick = () => {
+    if (!rest.disabled) {
+      onClick()
+    } else {
+      alert('Por favor complete todos os campos antes de atualizar o prato')
+    }
+  }
   return (
-    <Container type="button" disabled={loading} $hasicon={hasIcon} {...rest}>
+    <Container
+      type="button"
+      disabled={loading}
+      $hasicon={hasIcon}
+      onClick={handleClick}
+      {...rest}
+    >
       {hasIcon && <PiReceiptBold />}
       {title}
       {price ? ` ∙ R$ ${price}` : ''}

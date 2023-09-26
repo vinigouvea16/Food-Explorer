@@ -9,7 +9,7 @@ export function HeaderAdmin() {
   const { logOut, user } = useAuth()
   const navigate = useNavigate()
 
-  function handleNewDish({ id }) {
+  function handleNewDish() {
     navigate(`/new`)
   }
   function handleLogOut() {

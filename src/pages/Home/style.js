@@ -26,9 +26,9 @@ export const Container = styled.div`
   .mainImg {
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     height: 260px;
-    width: 1120px;
+    /* width: 1120px; */
     background: ${({ theme }) => theme.COLORS.GRADIENTS.G200};
     border-radius: 8px;
     z-index: 0;
@@ -69,8 +69,8 @@ export const Container = styled.div`
 `
 export const Content = styled.div`
   padding: 0 123px;
-  max-width: 1380px;
   margin: 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,5 +88,8 @@ export const Content = styled.div`
     line-height: 140%;
     padding-bottom: 23px;
     padding-top: 49px;
+  }
+  > Section {
+    color: ${({ theme }) => theme.COLORS.LIGHT.L300};
   }
 `

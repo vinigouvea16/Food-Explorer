@@ -40,7 +40,7 @@ export const Brand = styled.div`
   background-repeat: no-repeat;
   /* background-size: cover; */
   width: 197px;
-  height: 30px;
+  height: 45px;
   margin-right: 32px;
   cursor: pointer;
 `

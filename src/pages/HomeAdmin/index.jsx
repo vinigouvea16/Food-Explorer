@@ -1,16 +1,14 @@
-import { Container, Content } from './style'
-// import {Button} from '../../components/Button'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { Footer } from '../../components/Footer'
 import { HeaderAdmin } from '../../components/HeaderAdmin'
-import { MyCarousel } from '../../components/MyCarousel'
+import { MyCarouselAdmin } from '../../components/MyCarouselAdmin'
 import { api } from '../../services/api'
+import { Container, Content } from './style'
 
 function Home() {
   const [data, setData] = useState([])
-  const [category, setCategory] = useState([])
-  const params = useParams()
+  // const [category, setCategory] = useState([])
+  // const params = useParams()
 
   const [meals, setMeals] = useState([])
   const [desserts, setDesserts] = useState([])
@@ -55,17 +53,17 @@ function Home() {
 
         <div className="headercarousel">
           <h1>Refeições</h1>
-          {meals.length > 0 && <MyCarousel data={meals} />}
+          {meals.length > 0 && <MyCarouselAdmin data={meals} />}
         </div>
 
         <div className="headercarousel">
           <h1>Sobremesas</h1>
-          {desserts.length > 0 && <MyCarousel data={desserts} />}
+          {desserts.length > 0 && <MyCarouselAdmin data={desserts} />}
         </div>
 
         <div className="headercarousel">
           <h1>Bebidas</h1>
-          {drinks.length > 0 && <MyCarousel data={drinks} />}
+          {drinks.length > 0 && <MyCarouselAdmin data={drinks} />}
         </div>
       </Content>
       <Footer />

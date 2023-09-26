@@ -1,3 +1,4 @@
+import { Minus, Plus } from '@phosphor-icons/react'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { api } from '../../services/api'
@@ -60,7 +61,7 @@ export function Card({
       <p> {description}</p>
       <h5>R$ {price}</h5>
       <div className="divone">
-        <svg
+        {/* <svg
           width="50"
           height="24"
           fill="none"
@@ -72,9 +73,10 @@ export function Card({
             d="M3.4707 12C3.4707 11.5858 3.80649 11.25 4.2207 11.25H20.7207C21.1349 11.25 21.4707 11.5858 21.4707 12C21.4707 12.4142 21.1349 12.75 20.7207 12.75H4.2207C3.80649 12.75 3.4707 12.4142 3.4707 12Z"
             fill="white"
           />
-        </svg>
+        </svg> */}
+        <Minus size={58} />
         <span> 01 </span>
-        <svg
+        {/* <svg
           width="50"
           height="24"
           fill="none"
@@ -92,7 +94,8 @@ export function Card({
             d="M12.4707 3C12.8849 3 13.2207 3.33579 13.2207 3.75V20.25C13.2207 20.6642 12.8849 21 12.4707 21C12.0565 21 11.7207 20.6642 11.7207 20.25V3.75C11.7207 3.33579 12.0565 3 12.4707 3Z"
             fill="white"
           />
-        </svg>
+        </svg> */}
+        <Plus size={58} />
         <Button title="incluir" />
       </div>
     </Container>

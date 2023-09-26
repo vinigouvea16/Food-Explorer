@@ -34,12 +34,10 @@ function AuthProvider({ children }) {
       if (dishFile) {
         const fileUploadForm = new FormData()
         fileUploadForm.append('image', dishFile)
-
         const response = await api.patch('/dishes/plateimg', fileUploadForm)
         dish.image = response.data.image
       }
       await api.put('/dishes', dish)
-      // ????
       localStorage.setItem('@foodexplorer:dish', JSON.stringify(dish))
       setData({ dish, token: data.token })
       alert('prato atualizado')

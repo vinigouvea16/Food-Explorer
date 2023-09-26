@@ -5,13 +5,13 @@ import { useEffect } from 'react'
 import { CardAdmin } from '../CardAdmin'
 import { Container } from './style'
 
-export function MyCarouselAdmin({ data, ...rest }) {
+export function MyCarouselAdmin({ data, category, ...rest }) {
   const id = crypto.randomUUID()
-
   useEffect(() => {
     new Splide(`#splide${id}`, {
       autoWidth: true,
       pagination: false,
+      type: 'loop',
       drag: 'free',
       arrows: true,
       classes: {
@@ -25,15 +25,12 @@ export function MyCarouselAdmin({ data, ...rest }) {
         touch: 10,
       },
       autoplay: 'pause',
-      // type: "loop",
       trimSpace: 'move',
+      loop: true,
       focus: 'center',
       updateOnMove: true,
     }).mount()
-  }, [
-    // data,
-    id,
-  ])
+  }, [data, id])
   return (
     <Container>
       <section
@@ -51,18 +48,19 @@ export function MyCarouselAdmin({ data, ...rest }) {
         </div>
         <div className="splide__track">
           <ul className="splide__list">
-            <li className="splide__slide">
-              <CardAdmin />
-            </li>
-            <li className="splide__slide">
-              <CardAdmin />
-            </li>
-            <li className="splide__slide">
-              <CardAdmin />
-            </li>
-            <li className="splide__slide">
-              <CardAdmin />
-            </li>
+            {data.length &&
+              data.map((dish) => (
+                <li key={dish.id} className="splide__slide">
+                  <CardAdmin
+                    key={dish.id}
+                    title={dish.name}
+                    description={dish.description}
+                    price={dish.price}
+                    image={dish.image}
+                    id={dish.id}
+                  />
+                </li>
+              ))}
           </ul>
         </div>
       </section>

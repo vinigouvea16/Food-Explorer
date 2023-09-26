@@ -67,20 +67,15 @@ export const Content = styled.div`
     border-radius: 5px;
     width: 162px;
     height: 48px;
-    margin-left: 20px;
+  }
+  img {
+    width: 390px;
+    height: 389px;
+    border-radius: 100%;
   }
   .divone {
     display: flex;
     align-items: center;
     gap: 14px;
-  }
-  .divone span {
-    color: ${({ theme }) => theme.COLORS.LIGHT.L300};
-    font-size: 25px;
-    font-family: Roboto;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 160%;
   }
 `

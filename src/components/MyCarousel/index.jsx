@@ -12,6 +12,8 @@ export function MyCarousel({ data, category, ...rest }) {
       autoWidth: true,
       pagination: false,
       drag: 'free',
+      type: 'loop',
+      loop: true,
       arrows: true,
       classes: {
         arrows: 'splide__arrows your-class-arrows',
@@ -24,7 +26,6 @@ export function MyCarousel({ data, category, ...rest }) {
         touch: 10,
       },
       autoplay: 'pause',
-      // type: "loop",
       trimSpace: 'move',
       focus: 'center',
       updateOnMove: true,
@@ -56,20 +57,10 @@ export function MyCarousel({ data, category, ...rest }) {
                     description={dish.description}
                     price={dish.price}
                     image={dish.image}
-                    // category={dish.category}
                     id={dish.id}
                   />
                 </li>
               ))}
-            {/* <li className="splide__slide">
-              <Card />
-            </li>
-            <li className="splide__slide">
-              <Card />
-            </li>
-            <li className="splide__slide">
-              <Card />
-            </li> */}
           </ul>
         </div>
       </section>

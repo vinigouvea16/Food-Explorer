@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '../../components/Button'
 import { InputCurrency } from '../../components/CurrencyInput'
 import { Footer } from '../../components/Footer'
-import { Header } from '../../components/Header'
+import { HeaderAdmin } from '../../components/HeaderAdmin'
 import { InputDish } from '../../components/InputDish'
 import { NewIngredient } from '../../components/NewIngredient'
 import { Section } from '../../components/Section'
@@ -42,9 +42,9 @@ function NewDish() {
     if (!description) {
       return alert('Insira descrição do prato')
     }
-    // if (!price) {
-    //   return alert('Estipule o valor do prato')
-    // }
+    if (!price) {
+      return alert('Estipule o valor do prato')
+    }
     if (!category) {
       return alert('Estipule uma categoria para o prato')
     }
@@ -59,7 +59,6 @@ function NewDish() {
         '/dishes',
         {
           name,
-          // image,
           description,
           price,
           ingredients,
@@ -89,7 +88,7 @@ function NewDish() {
 
   return (
     <Container>
-      <Header />
+      <HeaderAdmin />
       <Content>
         <Link to="/">
           <svg
@@ -168,10 +167,6 @@ function NewDish() {
           <div className="twoInputs">
             <div className="tags">
               <span>Ingredientes</span>
-              {/* <InputIng 
-          placeholder=""
-          type="text"
-          /> */}
               <Section>
                 {ingredients.map((ingredient, index) => (
                   <NewIngredient

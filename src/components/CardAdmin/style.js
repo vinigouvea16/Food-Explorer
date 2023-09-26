@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -10,42 +10,52 @@ export const Container = styled.div`
   justify-content: center;
   position: relative;
   gap: 15px;
-  background-color: ${({theme})=> theme.COLORS.DARK.D200};
+  background-color: ${({ theme }) => theme.COLORS.DARK.D200};
   margin-right: 25px;
-  >h4{
-  font-size: 24px;
-  font-family: Poppins;
-  font-weight: 700;
-  line-height: 140%;
+  > p {
+    overflow: hidden;
+    text-align: center;
+    width: 256px;
+    max-height: 44px;
   }
-  >span{
+  > h4 {
+    font-size: 24px;
+    font-family: Poppins;
+    font-weight: 700;
+    line-height: 140%;
+  }
+  > span {
     padding: 2px;
     font-size: 24px;
   }
-  h5{
-    color: ${({theme})=> theme.COLORS.COLORS.CAKE_200};
+  h5 {
+    color: ${({ theme }) => theme.COLORS.COLORS.CAKE_200};
     font-family: Roboto;
     font-size: 32px;
     font-weight: 400;
     line-height: 160%;
     align-items: center;
   }
+  img {
+    border-radius: 100%;
+    width: 176px;
+    height: 176px;
+  }
 `
-
 
 export const Pencil = styled.button`
   width: 24px;
-  height: 22px;
+  height: 24px;
   position: absolute;
   right: 18px;
   top: 16px;
   background-color: transparent;
   border: none;
-  
-  &:hover{
+
+  &:hover {
     scale: 1.2;
-  >svg path{
-    stroke: ${({theme})=> theme.COLORS.COLORS.MINT_100};
-  }
+    > svg path {
+      stroke: ${({ theme }) => theme.COLORS.COLORS.TOMATO_200};
+    }
   }
 `

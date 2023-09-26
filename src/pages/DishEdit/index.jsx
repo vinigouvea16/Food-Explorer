@@ -1,15 +1,14 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Button } from '../../components/Button'
 import { InputCurrency } from '../../components/CurrencyInput'
 import { Footer } from '../../components/Footer'
-import { Header } from '../../components/Header'
+import { HeaderAdmin } from '../../components/HeaderAdmin'
 import { InputDish } from '../../components/InputDish'
 import { NewIngredient } from '../../components/NewIngredient'
 import { Section } from '../../components/Section'
 import { Select } from '../../components/Select'
 import { Textarea } from '../../components/Textarea'
-import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
 import { Container, Content, Form } from './style'
 
@@ -19,6 +18,8 @@ function DishEdit() {
     { value: 'Sobremesas', label: 'Sobremesas' },
     { value: 'Bebidas', label: 'Bebidas' },
   ]
+  const params = useParams()
+
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
@@ -36,39 +37,30 @@ function DishEdit() {
     )
   }
 
-  async function handleNewPlate() {
-    if (!name) {
-      return alert('Insira o nome do prato')
-    }
-    if (!description) {
-      return alert('Insira descrição do prato')
-    }
-    // if(!price){
-    //   return alert("Estipule o valor do prato")
-    // }
-    if (!category) {
-      return alert('Estipule uma categoria para o prato')
-    }
-    if (newIngredient) {
-      return alert(
-        'Parece que você esqueceu de adicionar um dos ingredientes, clique para adicionar, ou remova-o',
+  async function handleUpdate() {
+    try {
+      const response = await api.put(
+        `/dishes/${params.id}`,
+        {
+          name,
+          description,
+          price,
+          ingredients,
+          category,
+        },
+        {},
       )
+      console.log(response)
+      if (dishFile) {
+        const form = new FormData()
+        form.append('plateimg', dishFile)
+        await api.patch(`/dishes/plateimg/${response.data.dish_id}`, form)
+      }
+      alert('Prato atualizado com sucesso!')
+      navigate(-1)
+    } catch (error) {
+      console.error(error)
     }
-
-    await api.post(
-      '/dishes',
-      {
-        name,
-        // image,
-        description,
-        price,
-        ingredients,
-        category,
-      },
-      {},
-    )
-    alert('Prato cadastrado com sucesso!')
-    navigate(-1)
   }
 
   const [dishFile, setDishFile] = useState(null)
@@ -77,26 +69,19 @@ function DishEdit() {
     setDishFile(file)
   }
 
-  const { dish, updateDish } = useAuth()
-  async function handleUpdate() {
-    const updated = {
-      name,
-      description,
-      price,
-      category,
-      image,
+  async function handleDelete() {
+    try {
+      await api.delete(`/dishes/${params.id}`)
+    } catch (error) {
+      console.error(error)
     }
-    const dishUpdated = Object.assign(dish, updated)
-    await updateDish({ dish: dishUpdated, dishFile })
+    alert('Prato deletado com sucesso')
+    navigate('/')
   }
-  // function handleChangeImage(event){
-  //   const file = event.target.files[0]
-  //   set
-  // }
 
   return (
     <Container>
-      <Header />
+      <HeaderAdmin />
       <Content>
         <Link to="/">
           <svg
@@ -116,7 +101,7 @@ function DishEdit() {
           Voltar
         </Link>
         <header>
-          <h1>Adicionar prato</h1>
+          <h1>Editar prato</h1>
         </header>
 
         <Form>
@@ -175,10 +160,6 @@ function DishEdit() {
           <div className="twoInputs">
             <div className="tags">
               <span>Ingredientes</span>
-              {/* <InputIng 
-          placeholder=""
-          type="text"
-          /> */}
               <Section>
                 {ingredients.map((ingredient, index) => (
                   <NewIngredient
@@ -200,7 +181,10 @@ function DishEdit() {
               <span>Preços</span>
               <InputCurrency
                 type="number"
-                onChange={(e) => setPrice(e.target.value)}
+                onValueChange={(value) => {
+                  setPrice(value)
+                }}
+                value={price}
               />
             </div>
           </div>
@@ -213,8 +197,18 @@ function DishEdit() {
           </div>
 
           <div className="buttons">
-            <Button $isText title="Excluir prato" />
-            <Button loading title="Salvar Alterações" onClick={handleUpdate} />
+            <Button $isText title="Excluir prato" onClick={handleDelete} />
+            <Button
+              title="Salvar Alterações"
+              disabled={
+                !name ||
+                !category ||
+                ingredients.length === 0 ||
+                !price ||
+                !description
+              }
+              onClick={handleUpdate}
+            />
           </div>
         </Form>
       </Content>
