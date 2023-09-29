@@ -22,14 +22,14 @@ export function NavBar() {
     <Container>
       <div>
         <Brand onClick={handleHome} />
-        <Input placeholder="Busque por pratos ou ingredientes" hasIcon />
+        <Input placeholder="Busque por pratos ou ingredientes" hasicon />
         <Link to="/favorites">
           <span>Meus favoritos</span>
         </Link>
         <Link to="history">
           <span>Histórico de pedidos</span>
         </Link>
-        <Button hasIcon title="Pedidos (0)" onClick={handleOrder} />
+        <Button hasicon title="Pedidos (0)" onClick={handleOrder} />
         <Logout onClick={handleLogOut}>
           <GoSignOut />
         </Logout>

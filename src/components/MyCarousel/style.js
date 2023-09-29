@@ -10,6 +10,9 @@ export const Container = styled.div`
     font-weight: 400;
     line-height: 160%;
     overflow-x: hidden;
+    @media (max-width: 576px) {
+      margin-bottom: 24px;
+    }
   }
   .splide__arrow {
     -ms-flex-align: center;
@@ -32,11 +35,18 @@ export const Container = styled.div`
   .splide__arrow--prev {
     left: 0;
     background: ${({ theme }) => theme.COLORS.GRADIENTS.G150};
+    @media (max-width: 576px) {
+      display: none;
+    }
   }
   .splide__arrow--next {
     right: 0;
     background: ${({ theme }) => theme.COLORS.GRADIENTS.G100};
+    @media (max-width: 576px) {
+      display: none;
+    }
   }
+
   .splide__arrow {
     border-radius: 0%;
     width: 140px;
@@ -48,27 +58,8 @@ export const Container = styled.div`
     height: 30px;
     width: 30px;
   }
-  /* .splide__slide__container{
-  display: flex;
-  height: 462px;
-  padding: 24px;
-  width: 304px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  gap: 15px;
-  background: ${({ theme }) => theme.COLORS.DARK.D200};
-  margin-right: 25px;
-  >h4{
-  font-size: 24px;
-  font-family: Poppins;
-  font-weight: 700;
-  line-height: 140%;
-  }
-  } */
   > section img {
-    height: 176px;
+    max-height: 176px;
   }
   section .divone {
     display: flex;

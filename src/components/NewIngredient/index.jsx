@@ -1,26 +1,20 @@
-import { FiPlus, FiX } from 'react-icons/fi';
+import { FiPlus, FiX } from 'react-icons/fi'
 
-import { Container } from './styles';
+import { Container } from './styles'
 
 // eslint-disable-next-line react/prop-types
-export function NewIngredient({ $isNew, value, onClick, ...rest}){
-  return(
+export function NewIngredient({ $isNew, value, onClick, ...rest }) {
+  return (
     <Container $isNew={$isNew}>
-      <input
-      type="text"
-      value={value}
-      readOnly={!$isNew}
-      {...rest}
-      />
-      
-      <button
-      type="button"
-      onClick={onClick}
-      className={$isNew ? 'button-add': 'button-delete'}
-      >
-      { $isNew ? <FiPlus /> : <FiX />}
-      </button>
+      <input type="text" value={value} readOnly={!$isNew} {...rest} />
 
+      <button
+        type="button"
+        onClick={onClick}
+        className={$isNew ? 'button-add' : 'button-delete'}
+      >
+        {$isNew ? <FiPlus /> : <FiX />}
+      </button>
     </Container>
   )
 }

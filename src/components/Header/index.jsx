@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import { GoSignOut } from 'react-icons/go'
+import { GoFilter, GoSignOut } from 'react-icons/go'
+import { PiReceiptBold } from 'react-icons/pi'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../../components/Button'
 import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
 import { Input } from '../Input'
-import { Brand, Container, Logout } from './style'
+import { Brand, Container, Logout, Menu, Order } from './style'
 
 export function Header() {
   const { logOut, user } = useAuth()
@@ -17,7 +18,9 @@ export function Header() {
     navigate('/')
     logOut()
   }
-
+  function handleSidebar() {
+    // navigate('/menu')
+  }
   function handleHome() {
     navigate('/')
   }
@@ -28,10 +31,10 @@ export function Header() {
     async function fetchData() {
       const ingredientsResponse = await api.get('/ingredients')
       setIngredients(ingredientsResponse.data)
-      console.log(ingredientsResponse.data)
+      // console.log(ingredientsResponse.data)
       const dishesResponse = await api.get('/dishes')
       setDishes(dishesResponse.data)
-      console.log(dishesResponse.data)
+      // console.log(dishesResponse.data)
     }
     fetchData()
   }, [])
@@ -45,17 +48,32 @@ export function Header() {
   return (
     <Container>
       <div>
+        <Menu onClick={handleSidebar}>
+          <GoFilter />
+        </Menu>
         <Brand onClick={handleHome} />
         <Input
           placeholder="Busque por pratos ou ingredientes"
-          hasIcon
-          // onChange={(e) => setSearch(e.target.value)}
+          hasicon
+          onChange={(e) => setSearch(e.target.value)}
         />
-        <Button hasIcon title="Pedidos (0)" onClick={handleOrder} />
+        <OrderButton />
         <Logout onClick={handleLogOut}>
           <GoSignOut />
         </Logout>
       </div>
     </Container>
+  )
+}
+
+function OrderButton() {
+  return (
+    <>
+      <Button hasicon title="Meus Pedidos" />
+      <Order hasicon title="Pedidos">
+        <span>{4}</span>
+        <PiReceiptBold />
+      </Order>
+    </>
   )
 }

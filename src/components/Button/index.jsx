@@ -1,10 +1,10 @@
 import { PiReceiptBold } from 'react-icons/pi'
-import Container from './style'
+import { ButtonStyled } from './style'
 
 export function Button({
   title,
   loading = false,
-  hasIcon = false,
+  hasicon = false,
   isText = false,
   icon: Icon,
   price,
@@ -19,16 +19,16 @@ export function Button({
     }
   }
   return (
-    <Container
+    <ButtonStyled
       type="button"
       disabled={loading}
-      $hasicon={hasIcon}
+      $hasicon={hasicon}
       onClick={handleClick}
       {...rest}
     >
-      {hasIcon && <PiReceiptBold />}
+      {hasicon && <PiReceiptBold />}
       {title}
       {price ? ` ∙ R$ ${price}` : ''}
-    </Container>
+    </ButtonStyled>
   )
 }

@@ -1,5 +1,5 @@
 import { FiSearch } from 'react-icons/fi'
-import { Container } from './style'
+import { InputGroup } from './style'
 
 // eslint-disable-next-line react/prop-types
 export function Input({
@@ -7,15 +7,15 @@ export function Input({
   placeholder,
   label,
   value,
-  hasIcon,
+  hasicon,
   icon: Icon,
   ...rest
 }) {
   return (
-    <Container $hasicon={hasIcon}>
+    <InputGroup $hasicon={hasicon}>
       {/* {label} */}
-      {hasIcon && <FiSearch size={24} />}
+      {hasicon && <FiSearch size={24} />}
       <input type={type} placeholder={placeholder} value={value} {...rest} />
-    </Container>
+    </InputGroup>
   )
 }

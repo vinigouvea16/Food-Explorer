@@ -3,20 +3,22 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  /* margin-top: 90px; */
   max-width: 1380px;
   margin: 0 auto;
+  @media (max-width: 576px) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 `
 
 export const Form = styled.form`
   padding: 64px;
   width: auto;
   height: auto;
-  /* margin: 0 auto; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin-left: 108px; */
 
   justify-content: center;
   gap: 32px;
@@ -55,6 +57,13 @@ export const Form = styled.form`
   > input {
     width: 100%;
   }
+  @media (max-width: 576px) {
+    background-color: transparent;
+    padding: 2px;
+    > h1 {
+      display: none;
+    }
+  }
 `
 export const Background = styled.div`
   flex: 1;
@@ -70,5 +79,8 @@ export const Background = styled.div`
     font-size: 42px;
     font-weight: 700;
     line-height: normal;
+  }
+  @media (max-width: 576px) {
+    margin: 158px 0 74px;
   }
 `

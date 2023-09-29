@@ -25,4 +25,7 @@ export const Container = styled.textarea`
     line-height: 100%;
     color: ${({ theme }) => theme.COLORS.LIGHT.L500};
   }
+  @media (max-width: 576px) {
+    width: 352px;
+  }
 `

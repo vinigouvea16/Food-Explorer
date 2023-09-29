@@ -78,7 +78,6 @@ function DishEdit() {
     alert('Prato deletado com sucesso')
     navigate('/')
   }
-
   return (
     <Container>
       <HeaderAdmin />

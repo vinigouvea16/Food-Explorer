@@ -1,6 +1,5 @@
-
-export function Select({value, onChange}){
-  return(
+export function Select({ value, onChange }) {
+  return (
     <select name="category" value={value} onChange={onChange}>
       <option valeu="Categoria">Categoria</option>
       <option valeu="Refeições">Refeições</option>

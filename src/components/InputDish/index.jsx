@@ -7,14 +7,14 @@ export function InputDish({
   placeholder,
   label,
   value,
-  hasIcon,
+  hasicon,
   icon: Icon,
   ...rest
 }) {
   return (
-    <Container $hasicon={hasIcon}>
+    <Container $hasicon={hasicon}>
       {/* {label} */}
-      {hasIcon && <FiSearch size={24} />}
+      {hasicon && <FiSearch size={24} />}
       <input type={type} placeholder={placeholder} value={value} {...rest} />
     </Container>
   )

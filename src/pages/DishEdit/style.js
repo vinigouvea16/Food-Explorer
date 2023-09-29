@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   display: grid;
   grid-template-rows: 105px auto;
+  overflow-x: hidden;
   grid-template-areas:
     'header'
     'content'
@@ -21,18 +22,29 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 123px;
+    /* padding-left: 123px; */
     margin: 24px 0 48px;
+    @media (max-width: 576px) {
+      padding: 0;
+    }
   }
 `
 
 export const Form = styled.form`
   display: flex;
-  max-width: 1318px;
+  width: 100%;
   flex-direction: column;
   align-items: flex-end;
-  margin: 0 130px;
+  /* margin: 0 130px; */
   gap: 32px;
+  /* margin-right: 25px; */
+  @media (max-width: 576px) {
+    width: 100%;
+    margin: 10px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
   .threeInputs {
     label {
       width: 229px;
@@ -66,6 +78,17 @@ export const Form = styled.form`
         font-weight: 500;
         line-height: 24px;
       }
+      @media (max-width: 576px) {
+        width: 352px;
+      }
+    }
+    @media (max-width: 576px) {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      > select {
+        width: 352px;
+      }
     }
   }
   .threeInputs,
@@ -73,6 +96,11 @@ export const Form = styled.form`
     display: flex;
     gap: 32px;
     justify-content: space-between;
+    @media (max-width: 576px) {
+      gap: 24px;
+      display: flex;
+      flex-direction: column;
+    }
   }
   .threeInputs span,
   .twoInputs span,
@@ -82,7 +110,6 @@ export const Form = styled.form`
     margin-bottom: 16px;
   }
   .buttons {
-    margin-bottom: 146px;
     display: flex;
     gap: 30px;
   }
@@ -102,6 +129,9 @@ export const Form = styled.form`
     font-weight: 400;
     line-height: 160%;
     padding-left: 14px;
+    @media (max-width: 576px) {
+      width: 352px;
+    }
   }
   Section {
     display: flex;
@@ -112,6 +142,9 @@ export const Form = styled.form`
     border-radius: 8px;
     flex-wrap: wrap;
     margin: 0;
+    @media (max-width: 576px) {
+      width: 352px;
+    }
   }
   .tags {
     display: flex;
@@ -119,10 +152,17 @@ export const Form = styled.form`
     flex-direction: column;
     align-items: flex-start;
   }
+  .buttons {
+    @media (max-width: 576px) {
+      margin-bottom: 53px;
+      width: 352px;
+    }
+  }
 `
 
 export const Content = styled.div`
-  max-width: 1380px;
+  grid-area: content;
+  max-width: 1400px;
   margin: 0 auto;
   > header {
     display: flex;
@@ -130,14 +170,22 @@ export const Content = styled.div`
     justify-content: space-between;
     margin: 0 auto;
     > h1 {
+      @media (max-width: 576px) {
+        margin-left: 32px;
+      }
       color: ${({ theme }) => theme.COLORS.LIGHT.L300};
-      margin: 0 0 32px 130px;
+      /* margin: 0 0 32px 130px; */
       font-weight: 500;
       font-size: 32px;
       font-family: Poppins;
+      margin-bottom: 30px;
     }
   }
   a {
+    @media (max-width: 576px) {
+      margin-left: 32px;
+      padding-left: 0px;
+    }
     text-decoration: none;
     font-family: Poppins;
     font-size: 24px;
@@ -148,7 +196,7 @@ export const Content = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 124px;
+    /* padding-left: 124px; */
     margin: 40px 0 24px;
   }
 `

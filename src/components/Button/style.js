@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Container = styled.button`
+export const ButtonStyled = styled.button`
   width: 100%;
   background-color: ${({ theme, $isText }) =>
     !$isText ? theme.COLORS.COLORS.TOMATO_100 : theme.COLORS.COLORS.TOMATO_400};
@@ -32,4 +32,3 @@ const Container = styled.button`
       $isText ? theme.COLORS.COLORS.TOMATO_200 : theme.COLORS.COLORS.MINT_100};
   }
 `
-export default Container
