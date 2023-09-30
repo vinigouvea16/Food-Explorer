@@ -7,10 +7,11 @@ export const Container = styled.aside`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  /* display: none; */
+  display: none;
   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
     grid-area: none;
     position: absolute;
+    display: flex;
     z-index: 1;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;

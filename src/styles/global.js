@@ -15,7 +15,7 @@ export default createGlobalStyle`
   }
   
   ::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.COLORS.COLORS.CAKE_100};
+    background-color: ${({ theme }) => theme.COLORS.COLORS.CAKE_200};
   }
   body{
     background-color: ${({ theme }) => theme.COLORS.DARK.D400};

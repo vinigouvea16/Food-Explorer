@@ -50,6 +50,7 @@ export const Container = styled.div`
   > p {
     overflow: hidden;
     text-align: center;
+    height: 44px;
     @media (max-width: 576px) {
       display: none;
     }

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints'
+
 export const Container = styled.div`
   height: 100vh;
   /* width: 1380px; */
@@ -11,11 +12,10 @@ export const Container = styled.div`
     'menu content'
     'menu footer';
   overflow-y: scroll;
-  background-color: ${({ theme }) => theme.COLORS.DARK.D400};
   overflow-x: hidden;
 
   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-    /* width: 100%; */
+    width: 100%;
     /* margin: 0 auto; */
     grid-template-columns: auto;
     grid-template-rows: auto 1fr;
@@ -27,7 +27,7 @@ export const Container = styled.div`
     /* flex-direction: column; */
     /* justify-content: start; */
     /* height: 100%; */
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
   }
   .mainImg {
     display: flex;
@@ -97,6 +97,7 @@ export const Container = styled.div`
 `
 
 export const Content = styled.div`
+  grid-area: content;
   padding: 0 123px;
   margin: 0 auto;
   width: 100%;

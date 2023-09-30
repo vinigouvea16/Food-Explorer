@@ -15,7 +15,7 @@ export const Container = styled.div`
   overflow-x: hidden;
 
   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-    /* width: 100%; */
+    width: 100%;
     /* margin: 0 auto; */
     grid-template-columns: auto;
     grid-template-rows: auto 1fr;
@@ -27,7 +27,7 @@ export const Container = styled.div`
     /* flex-direction: column; */
     /* justify-content: start; */
     /* height: 100%; */
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
   }
   .mainImg {
     display: flex;

@@ -44,21 +44,21 @@ export function Header({ onOpenMenu }) {
 
   return (
     <Container>
-      <div>
-        <Menu onClick={onOpenMenu}>
-          <GoFilter />
-        </Menu>
-        <Brand onClick={handleHome} />
-        <Input
-          placeholder="Busque por pratos ou ingredientes"
-          hasicon
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <OrderButton />
-        <Logout onClick={handleLogOut}>
-          <GoSignOut />
-        </Logout>
-      </div>
+      {/* <div> */}
+      <Menu onClick={onOpenMenu}>
+        <GoFilter />
+      </Menu>
+      <Brand onClick={handleHome} />
+      <Input
+        placeholder="Busque por pratos ou ingredientes"
+        hasicon
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <OrderButton />
+      <Logout onClick={handleLogOut}>
+        <GoSignOut />
+      </Logout>
+      {/* </div> */}
     </Container>
   )
 }

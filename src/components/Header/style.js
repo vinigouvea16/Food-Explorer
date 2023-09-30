@@ -5,6 +5,7 @@ import { InputGroup } from '../Input/style'
 export const Container = styled.header`
   grid-area: header;
   height: 104px;
+  /* max-width: 1380px; */
   width: 100%;
   align-items: center;
   display: flex;
@@ -20,7 +21,7 @@ export const Container = styled.header`
       display: none;
     }
   }
-  div {
+  /* div {
     max-width: 1380px;
     align-items: center;
     display: flex;
@@ -39,7 +40,7 @@ export const Container = styled.header`
         display: none;
       }
     }
-  }
+  } */
   @media (max-width: 576px) {
     height: 114px;
     flex-shrink: 0;
@@ -65,16 +66,9 @@ export const Brand = styled.div`
   background-repeat: no-repeat;
   width: 197px;
   height: 30px;
-  margin-right: 32px;
+  /* margin-right: 32px; */
   cursor: pointer;
-  @media (max-width: 576px) {
-    display: flex;
-    height: 30px;
-    width: 200px;
-    justify-content: center;
-    align-items: flex-start;
-    /* margin-right: 20px; */
-  }
+  flex-shrink: 0;
 `
 export const Order = styled.button`
   all: unset;

@@ -7,7 +7,7 @@ export const Container = styled.div`
   height: 100vh;
   display: grid;
   overflow-x: hidden;
-  grid-template-rows: 105px auto;
+  grid-template-rows: 105px 1fr;
   grid-template-areas:
     'header'
     'content'
@@ -40,7 +40,7 @@ export const Container = styled.div`
   }
   main {
     /* grid-area: main; */
-    margin: 0 auto;
+    margin: 30px auto;
     @media (max-width: 576px) {
       display: flex;
       flex-direction: column;

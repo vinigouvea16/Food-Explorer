@@ -23,21 +23,23 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 24px 0 48px 115px;
+    /* margin: 24px 0 48px 54px; */
   }
   main {
-    grid-area: main;
+    /* grid-area: main; */
     margin: 0 auto;
     @media (max-width: 576px) {
       display: flex;
       flex-direction: column;
-      max-width: 576px;
+      /* max-width: 576px; */
       /* padding: 0 56px; */
     }
     a {
-      left: -70px;
       position: relative;
       margin: 24px 0 16px 115px;
+      @media (max-width: 576px) {
+        left: -70px;
+      }
     }
   }
   @media (max-width: 576px) {
