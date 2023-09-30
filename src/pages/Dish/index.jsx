@@ -4,6 +4,7 @@ import { Button } from '../../components/Button'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Section } from '../../components/Section'
+import { SideMenu } from '../../components/SideMenu'
 import { Ingredients } from '../../components/Tag'
 import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
@@ -12,7 +13,7 @@ import { Container, Content } from './style'
 function Dish() {
   const [data, setData] = useState(null)
   const params = useParams()
-
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
   const { dish, updateDish } = useAuth()
 
   useEffect(() => {
@@ -37,7 +38,11 @@ function Dish() {
 
   return (
     <Container>
-      <Header />
+      <SideMenu
+        menuIsOpen={menuIsOpen}
+        onCloseMenu={() => setMenuIsOpen(false)}
+      />
+      <Header onOpenMenu={() => setMenuIsOpen(true)} />
       {data && (
         <main>
           <Link to="/">

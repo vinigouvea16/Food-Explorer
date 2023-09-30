@@ -6,9 +6,11 @@ import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { MyCarousel } from '../../components/MyCarousel'
 import { Section } from '../../components/Section'
+import { SideMenu } from '../../components/SideMenu'
 import { api } from '../../services/api'
 
 function Home() {
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [data, setData] = useState([])
   const [category, setCategory] = useState([])
   const params = useParams()
@@ -17,7 +19,6 @@ function Home() {
   const [meals, setMeals] = useState([])
   const [desserts, setDesserts] = useState([])
   const [drinks, setDrinks] = useState([])
-
   function categoryFilter(data) {
     const meals = data.filter((dish) => dish.category === 'Refeições')
     const desserts = data.filter((dish) => dish.category === 'Sobremesas')
@@ -43,7 +44,11 @@ function Home() {
 
   return (
     <Container>
-      <Header setSearch={setSearch} />
+      <SideMenu
+        menuIsOpen={menuIsOpen}
+        onCloseMenu={() => setMenuIsOpen(false)}
+      />
+      <Header setSearch={setSearch} onOpenMenu={() => setMenuIsOpen(true)} />
       <Content>
         <div className="mainImg">
           <img src="/assets/homeimg.png" alt="" />

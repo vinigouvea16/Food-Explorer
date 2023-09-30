@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { ButtonStyled } from '../../components/Button/style'
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints'
 
 export const Container = styled.div`
   width: 100%;
@@ -11,7 +12,19 @@ export const Container = styled.div`
     'header'
     'content'
     'footer';
-  background-color: ${({ theme }) => theme.COLORS.DARK.D400};
+  overflow-y: scroll;
+  overflow-x: hidden;
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      'header'
+      'content'
+      'footer';
+    /* height: 918px; */
+    width: 100%;
+    justify-content: center;
+  }
   > main a {
     text-decoration: none;
     font-family: Poppins;
@@ -39,11 +52,6 @@ export const Container = styled.div`
       position: relative;
       margin: 24px 0 16px 115px;
     }
-  }
-  @media (max-width: 576px) {
-    height: 918px;
-    width: 100%;
-    justify-content: center;
   }
 `
 export const Content = styled.div`

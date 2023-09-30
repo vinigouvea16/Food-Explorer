@@ -5,22 +5,20 @@ import { useAuth } from '../../hooks/auth'
 import { Input } from '../Input'
 import { Brand, Container, Logout, Menu } from './style'
 
-export function HeaderAdmin() {
+export function HeaderAdmin({ onOpenMenu }) {
   const { logOut, user } = useAuth()
   const navigate = useNavigate()
-
   function handleLogOut() {
     navigate('/')
     logOut()
   }
-
   function handleHome() {
     navigate('/')
   }
   return (
     <Container>
       <div>
-        <Menu>
+        <Menu onClick={onOpenMenu}>
           <GoFilter />
         </Menu>
         <Brand onClick={handleHome} />

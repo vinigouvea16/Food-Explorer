@@ -8,6 +8,7 @@ import { InputDish } from '../../components/InputDish'
 import { NewIngredient } from '../../components/NewIngredient'
 import { Section } from '../../components/Section'
 import { Select } from '../../components/Select'
+import { SideMenu } from '../../components/SideMenu'
 import { Textarea } from '../../components/Textarea'
 import { api } from '../../services/api'
 import { Container, Content, Form } from './style'
@@ -18,6 +19,7 @@ function NewDish() {
     { value: 'Sobremesas', label: 'Sobremesas' },
     { value: 'Bebidas', label: 'Bebidas' },
   ]
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
@@ -88,7 +90,11 @@ function NewDish() {
 
   return (
     <Container>
-      <HeaderAdmin />
+      <SideMenu
+        menuIsOpen={menuIsOpen}
+        onCloseMenu={() => setMenuIsOpen(false)}
+      />
+      <HeaderAdmin onOpenMenu={() => setMenuIsOpen(true)} />
       <Content>
         <Link to="/">
           <svg

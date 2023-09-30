@@ -8,7 +8,7 @@ import { api } from '../../services/api'
 import { Input } from '../Input'
 import { Brand, Container, Logout, Menu, Order } from './style'
 
-export function Header() {
+export function Header({ onOpenMenu }) {
   const { logOut, user } = useAuth()
   const navigate = useNavigate()
   function handleOrder() {
@@ -17,9 +17,6 @@ export function Header() {
   function handleLogOut() {
     navigate('/')
     logOut()
-  }
-  function handleSidebar() {
-    // navigate('/menu')
   }
   function handleHome() {
     navigate('/')
@@ -48,7 +45,7 @@ export function Header() {
   return (
     <Container>
       <div>
-        <Menu onClick={handleSidebar}>
+        <Menu onClick={onOpenMenu}>
           <GoFilter />
         </Menu>
         <Brand onClick={handleHome} />

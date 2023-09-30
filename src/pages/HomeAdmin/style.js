@@ -1,35 +1,33 @@
 import styled from 'styled-components'
-
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints'
 export const Container = styled.div`
   height: 100vh;
   /* width: 1380px; */
   display: grid;
   grid-template-rows: 105px auto;
+  grid-template-rows: auto 1fr;
   grid-template-areas:
-    'header'
-    'content'
-    'footer';
+    'menu header'
+    'menu content'
+    'menu footer';
   overflow-y: scroll;
   background-color: ${({ theme }) => theme.COLORS.DARK.D400};
-  ::-webkit-scrollbar-track {
-    border: 1px solid black;
-    background-color: ${({ theme }) => theme.COLORS.LIGHT.L300};
-  }
-  ::-webkit-scrollbar {
-    width: 10px;
-    background-color: #f5f5f5;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.COLORS.DARK.D400};
-  }
-  @media (max-width: 576px) {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    height: 100%;
-    overflow-x: hidden;
+  overflow-x: hidden;
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    /* width: 100%; */
+    /* margin: 0 auto; */
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      'header'
+      'content'
+      'footer';
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: start; */
+    /* height: 100%; */
+    /* overflow-x: hidden; */
   }
   .mainImg {
     display: flex;

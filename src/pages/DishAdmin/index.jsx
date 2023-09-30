@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Button } from '../../components/Button'
 import { Footer } from '../../components/Footer'
-import { Header } from '../../components/Header'
+import { HeaderAdmin } from '../../components/HeaderAdmin'
 import { Section } from '../../components/Section'
+import { SideMenu } from '../../components/SideMenu'
 import { Ingredients } from '../../components/Tag'
 import { api } from '../../services/api'
 import { Container, Content } from './style'
@@ -12,6 +13,7 @@ function DishAdmin() {
   const [data, setData] = useState(null)
   const params = useParams()
   const navigate = useNavigate()
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
   function handleDishEdit() {
     navigate(`/edit/${params.id}`)
   }
@@ -29,7 +31,11 @@ function DishAdmin() {
   }, [params.id])
   return (
     <Container>
-      <Header />
+      <SideMenu
+        menuIsOpen={menuIsOpen}
+        onCloseMenu={() => setMenuIsOpen(false)}
+      />
+      <HeaderAdmin onOpenMenu={() => setMenuIsOpen(true)} />
       {data && (
         <main>
           <Link to="/">

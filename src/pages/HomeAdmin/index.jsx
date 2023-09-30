@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Footer } from '../../components/Footer'
 import { HeaderAdmin } from '../../components/HeaderAdmin'
 import { MyCarouselAdmin } from '../../components/MyCarouselAdmin'
+import { SideMenu } from '../../components/SideMenu'
 import { api } from '../../services/api'
 import { Container, Content } from './style'
 
@@ -9,7 +10,7 @@ function Home() {
   const [data, setData] = useState([])
   // const [category, setCategory] = useState([])
   // const params = useParams()
-
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [meals, setMeals] = useState([])
   const [desserts, setDesserts] = useState([])
   const [drinks, setDrinks] = useState([])
@@ -41,7 +42,11 @@ function Home() {
 
   return (
     <Container>
-      <HeaderAdmin />
+      <SideMenu
+        menuIsOpen={menuIsOpen}
+        onCloseMenu={() => setMenuIsOpen(false)}
+      />
+      <HeaderAdmin onOpenMenu={() => setMenuIsOpen(true)} />
       <Content>
         <div className="mainImg">
           <img src="/assets/homeimg.png" alt="" />

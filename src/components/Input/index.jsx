@@ -9,6 +9,7 @@ export function Input({
   value,
   hasicon,
   icon: Icon,
+  menuIsOpen,
   ...rest
 }) {
   return (
