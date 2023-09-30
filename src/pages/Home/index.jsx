@@ -1,12 +1,13 @@
 import { Container, Content } from './style'
 // import {Button} from '../../components/Button'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { MyCarousel } from '../../components/MyCarousel'
 import { Section } from '../../components/Section'
 import { SideMenu } from '../../components/SideMenu'
+import { useDebounce } from '../../hooks/useDebounce'
 import { api } from '../../services/api'
 
 function Home() {
@@ -15,7 +16,7 @@ function Home() {
   const [category, setCategory] = useState([])
   const params = useParams()
   const [search, setSearch] = useState('')
-
+  const searchDebounce = useDebounce(search, 300)
   const [meals, setMeals] = useState([])
   const [desserts, setDesserts] = useState([])
   const [drinks, setDrinks] = useState([])
@@ -28,19 +29,30 @@ function Home() {
     setDesserts(desserts)
     setDrinks(drinks)
   }
+  function handleSearchChange(value) {
+    setSearch(value)
+  }
+
+  const fetchData = useCallback(async (search) => {
+    try {
+      const response = await api.get(`/dishes/`, {
+        params: {
+          name: search,
+          // ingredients: search,
+        },
+      })
+
+      setData(response.data)
+      categoryFilter(response.data)
+      console.log(response)
+    } catch (error) {
+      console.error(error)
+    }
+  }, [])
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await api.get(`/dishes/`)
-        setData(response.data)
-        categoryFilter(response.data)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    fetchData()
-  }, [])
+    fetchData(searchDebounce)
+  }, [fetchData, searchDebounce])
 
   return (
     <Container>
@@ -48,7 +60,11 @@ function Home() {
         menuIsOpen={menuIsOpen}
         onCloseMenu={() => setMenuIsOpen(false)}
       />
-      <Header setSearch={setSearch} onOpenMenu={() => setMenuIsOpen(true)} />
+      <Header
+        search={search}
+        onSearch={handleSearchChange}
+        onOpenMenu={() => setMenuIsOpen(true)}
+      />
       <Content>
         <div className="mainImg">
           <img src="/assets/homeimg.png" alt="" />

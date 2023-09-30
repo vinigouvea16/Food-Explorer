@@ -17,6 +17,8 @@ export const Container = styled.header`
   ${ButtonStyled} {
     max-width: 216px;
     height: 56px;
+  }
+  :is(${ButtonStyled}, ${InputGroup}) {
     @media (max-width: 576px) {
       display: none;
     }
@@ -43,10 +45,13 @@ export const Container = styled.header`
   } */
   @media (max-width: 576px) {
     height: 114px;
+    width: 100%;
     flex-shrink: 0;
     padding: 0;
     margin: 0;
     z-index: 0;
+    display: flex;
+    gap: 20px;
   }
 `
 export const Logout = styled.button`
