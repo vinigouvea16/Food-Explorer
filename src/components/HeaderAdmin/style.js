@@ -5,6 +5,7 @@ import { InputGroup } from '../Input/style'
 export const Container = styled.header`
   grid-area: header;
   height: 104px;
+  /* max-width: 1380px; */
   width: 100%;
   align-items: center;
   display: flex;
@@ -16,36 +17,21 @@ export const Container = styled.header`
   ${ButtonStyled} {
     max-width: 216px;
     height: 56px;
+  }
+  :is(${ButtonStyled}, ${InputGroup}) {
     @media (max-width: 576px) {
       display: none;
     }
   }
-  div {
-    max-width: 1380px;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 5px 123px;
-    gap: 32px;
-    @media (max-width: 576px) {
-      gap: 53px;
-      margin: 0;
-      padding: 0 28px;
-      height: 38px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      :is(${ButtonStyled}, ${InputGroup}) {
-        display: none;
-      }
-    }
-  }
   @media (max-width: 576px) {
     height: 114px;
+    width: 100%;
     flex-shrink: 0;
-    padding: 0;
+    padding: 0 28px;
     margin: 0;
+    z-index: 0;
+    display: flex;
+    gap: 20px;
   }
 `
 export const Logout = styled.button`
@@ -64,18 +50,9 @@ export const Brand = styled.div`
   background-image: url('/assets/logoadmin.png');
   background-repeat: no-repeat;
   width: 197px;
-  height: 40px;
-  margin-right: 32px;
+  height: 38px;
   cursor: pointer;
-  @media (max-width: 576px) {
-    display: flex;
-    height: 30px;
-    width: 200px;
-    justify-content: center;
-    align-items: flex-start;
-    margin: 20px;
-    /* margin-right: 20px; */
-  }
+  flex-shrink: 0;
 `
 export const Order = styled.button`
   all: unset;

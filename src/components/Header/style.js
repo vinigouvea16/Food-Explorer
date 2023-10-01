@@ -23,31 +23,11 @@ export const Container = styled.header`
       display: none;
     }
   }
-  /* div {
-    max-width: 1380px;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 5px 123px;
-    gap: 32px;
-    @media (max-width: 576px) {
-      gap: 53px;
-      margin: 0;
-      padding: 0 28px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      :is(${ButtonStyled}, ${InputGroup}) {
-        display: none;
-      }
-    }
-  } */
   @media (max-width: 576px) {
     height: 114px;
     width: 100%;
     flex-shrink: 0;
-    padding: 0;
+    padding: 0 28px;
     margin: 0;
     z-index: 0;
     display: flex;

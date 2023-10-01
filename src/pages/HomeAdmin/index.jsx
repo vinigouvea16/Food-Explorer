@@ -1,16 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Footer } from '../../components/Footer'
 import { HeaderAdmin } from '../../components/HeaderAdmin'
 import { MyCarouselAdmin } from '../../components/MyCarouselAdmin'
 import { SideMenu } from '../../components/SideMenu'
+import { useDebounce } from '../../hooks/useDebounce'
 import { api } from '../../services/api'
 import { Container, Content } from './style'
 
 function Home() {
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [data, setData] = useState([])
   // const [category, setCategory] = useState([])
   // const params = useParams()
-  const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const [search, setSearch] = useState('')
+  const searchDebounce = useDebounce(search, 300)
   const [meals, setMeals] = useState([])
   const [desserts, setDesserts] = useState([])
   const [drinks, setDrinks] = useState([])
@@ -24,21 +27,30 @@ function Home() {
     setDesserts(desserts)
     setDrinks(drinks)
   }
+  function handleSearchChange(value) {
+    setSearch(value)
+  }
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await api.get(`/dishes/`)
-        setData(response.data)
-        categoryFilter(response.data)
-      } catch (error) {
-        console.error(error)
-      }
+  const fetchData = useCallback(async (search) => {
+    try {
+      const response = await api.get(`/dishes/`, {
+        params: {
+          name: search,
+          // ingredients: search,
+        },
+      })
+
+      setData(response.data)
+      categoryFilter(response.data)
+      console.log(response)
+    } catch (error) {
+      console.error(error)
     }
-    fetchData()
   }, [])
 
-  // useEffect(() => {}, [data])
+  useEffect(() => {
+    fetchData(searchDebounce)
+  }, [fetchData, searchDebounce])
 
   return (
     <Container>
@@ -46,7 +58,11 @@ function Home() {
         menuIsOpen={menuIsOpen}
         onCloseMenu={() => setMenuIsOpen(false)}
       />
-      <HeaderAdmin onOpenMenu={() => setMenuIsOpen(true)} />
+      <HeaderAdmin
+        search={search}
+        onSearch={handleSearchChange}
+        onOpenMenu={() => setMenuIsOpen(true)}
+      />
       <Content>
         <div className="mainImg">
           <img src="/assets/homeimg.png" alt="" />

@@ -5,7 +5,7 @@ import { useAuth } from '../../hooks/auth'
 import { Input } from '../Input'
 import { Brand, Container, Logout, Menu } from './style'
 
-export function HeaderAdmin({ onOpenMenu }) {
+export function HeaderAdmin({ search, onSearch, onOpenMenu }) {
   const { logOut, user } = useAuth()
   const navigate = useNavigate()
   function handleLogOut() {
@@ -17,17 +17,20 @@ export function HeaderAdmin({ onOpenMenu }) {
   }
   return (
     <Container>
-      <div>
-        <Menu onClick={onOpenMenu}>
-          <GoFilter />
-        </Menu>
-        <Brand onClick={handleHome} />
-        <Input placeholder="Busque por pratos ou ingredientes" hasicon />
-        <OrderButton />
-        <Logout onClick={handleLogOut}>
-          <GoSignOut />
-        </Logout>
-      </div>
+      <Menu onClick={onOpenMenu}>
+        <GoFilter />
+      </Menu>
+      <Brand onClick={handleHome} />
+      <Input
+        placeholder="Busque por pratos ou ingredientes"
+        hasicon
+        value={search}
+        onChange={(e) => onSearch(e.target.value)}
+      />
+      <OrderButton />
+      <Logout onClick={handleLogOut}>
+        <GoSignOut />
+      </Logout>
     </Container>
   )
 }
@@ -40,10 +43,6 @@ function OrderButton() {
   return (
     <>
       <Button title="Novo Prato" onClick={handleNewDish} />
-      {/* <Order hasIcon title="Pedidos">
-        <span>{4}</span>
-        <PiReceiptBold />
-      </Order> */}
     </>
   )
 }

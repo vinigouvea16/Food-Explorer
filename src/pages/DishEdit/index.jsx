@@ -51,7 +51,6 @@ function DishEdit() {
         },
         {},
       )
-      console.log(response)
       if (dishFile) {
         const form = new FormData()
         form.append('plateimg', dishFile)
