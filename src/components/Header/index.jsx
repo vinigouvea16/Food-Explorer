@@ -7,7 +7,7 @@ import { Input } from '../Input'
 import { Brand, Container, Logout, Menu, Order } from './style'
 
 export function Header({ search, onSearch, onOpenMenu }) {
-  const { logOut, user } = useAuth()
+  const { logOut } = useAuth()
   const navigate = useNavigate()
   // function handleOrder() {
   //   navigate(`/order`)

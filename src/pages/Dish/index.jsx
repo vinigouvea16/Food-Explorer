@@ -77,7 +77,7 @@ function Dish() {
                   ))}
                 </Section>
               )}
-              <div className="divone">
+              <div className="divOne">
                 <svg
                   width="25"
                   height="24"

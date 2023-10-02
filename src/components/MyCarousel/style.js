@@ -61,7 +61,7 @@ export const Container = styled.div`
   > section img {
     max-height: 176px;
   }
-  section .divone {
+  section .divOne {
     display: flex;
     flex-direction: row;
     justify-content: center;

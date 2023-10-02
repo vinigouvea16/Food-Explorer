@@ -32,7 +32,7 @@ export const Container = styled.div`
     font-size: 16px;
     gap: 14px;
   }
-  .divone {
+  .divOne {
     ${ButtonStyled} {
       width: 92px;
     }

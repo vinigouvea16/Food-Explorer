@@ -70,7 +70,7 @@ function DishAdmin() {
                   ))}
                 </Section>
               )}
-              <div className="divone">
+              <div className="divOne">
                 <Button title="Editar Prato" onClick={handleDishEdit} />
               </div>
             </section>

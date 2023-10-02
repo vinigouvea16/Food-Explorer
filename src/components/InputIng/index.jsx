@@ -2,15 +2,7 @@ import { FiSearch } from 'react-icons/fi'
 import { Container } from './style'
 
 // eslint-disable-next-line react/prop-types
-export function InputIng({
-  type,
-  placeholder,
-  label,
-  value,
-  hasicon,
-  icon: Icon,
-  ...rest
-}) {
+export function InputIng({ type, placeholder, value, hasicon, ...rest }) {
   return (
     <Container $hasicon={hasicon}>
       {/* {label} */}

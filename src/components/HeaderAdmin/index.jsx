@@ -6,7 +6,7 @@ import { Input } from '../Input'
 import { Brand, Container, Logout, Menu } from './style'
 
 export function HeaderAdmin({ search, onSearch, onOpenMenu }) {
-  const { logOut, user } = useAuth()
+  const { logOut } = useAuth()
   const navigate = useNavigate()
   function handleLogOut() {
     navigate('/')

@@ -139,12 +139,12 @@ export const Content = styled.div`
       margin: 16px auto;
     }
   }
-  .divone {
+  .divOne {
     display: flex;
     align-items: center;
     gap: 14px;
   }
-  .divone span {
+  .divOne span {
     color: ${({ theme }) => theme.COLORS.LIGHT.L300};
     font-size: 25px;
     font-family: Roboto;

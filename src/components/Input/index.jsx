@@ -5,10 +5,8 @@ import { InputGroup } from './style'
 export function Input({
   type,
   placeholder,
-  label,
   value,
   hasicon,
-  icon: Icon,
   menuIsOpen,
   ...rest
 }) {

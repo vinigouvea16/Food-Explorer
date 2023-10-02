@@ -2,15 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { api } from '../../services/api'
 import { Container, Pencil } from './style'
-export function CardAdmin({
-  title,
-  description,
-  price,
-  id,
-  category,
-  image,
-  ...rest
-}) {
+export function CardAdmin({ title, description, price, id, image, ...rest }) {
   const [data, setData] = useState(null)
   const params = useParams()
 

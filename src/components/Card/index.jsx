@@ -60,7 +60,7 @@ export function Card({
       <h4>{title} &gt; </h4>
       <p> {description}</p>
       <h5>R$ {price}</h5>
-      <div className="divone">
+      <div className="divOne">
         <div className="counter">
           <Minus size={24} />
           <span> 01 </span>
