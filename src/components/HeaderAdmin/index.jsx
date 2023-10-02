@@ -23,7 +23,7 @@ export function HeaderAdmin({ search, onSearch, onOpenMenu }) {
       <Brand onClick={handleHome} />
       <Input
         placeholder="Busque por pratos ou ingredientes"
-        hasicon
+        $hasicon
         value={search}
         onChange={(e) => onSearch(e.target.value)}
       />

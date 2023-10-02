@@ -42,7 +42,6 @@ function Home() {
 
       setData(response.data)
       categoryFilter(response.data)
-      console.log(response)
     } catch (error) {
       console.error(error)
     }

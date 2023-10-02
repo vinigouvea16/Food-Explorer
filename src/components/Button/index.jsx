@@ -22,7 +22,7 @@ export function Button({
     <ButtonStyled
       type="button"
       disabled={loading}
-      $hasicon={hasicon}
+      // $hasicon={hasicon}
       onClick={handleClick}
       {...rest}
     >

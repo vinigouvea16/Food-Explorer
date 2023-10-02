@@ -19,29 +19,9 @@ export function Header({ search, onSearch, onOpenMenu }) {
   function handleHome() {
     navigate('/')
   }
-  // const [ingredients, setIngredients] = useState([])
-  // const [dishes, setDishes] = useState([])
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const ingredientsResponse = await api.get('/ingredients')
-  //     setIngredients(ingredientsResponse.data)
-  //     console.log(ingredientsResponse.data)
-  //     const dishesResponse = await api.get('/dishes')
-  //     setDishes(dishesResponse.data)
-  //     console.log(dishesResponse.data)
-  //   }
-  //   fetchData()
-  // }, [])
-  // useEffect(() => {
-  //   async function fetchDishes() {
-  //     await api.get(`/dishes?name=${search}&ingredients=${search}`)
-  //   }
-  //   fetchDishes()
-  // }, [search])
 
   return (
     <Container>
-      {/* <div> */}
       <Menu onClick={onOpenMenu}>
         <GoFilter />
       </Menu>
@@ -56,7 +36,6 @@ export function Header({ search, onSearch, onOpenMenu }) {
       <Logout onClick={handleLogOut}>
         <GoSignOut />
       </Logout>
-      {/* </div> */}
     </Container>
   )
 }

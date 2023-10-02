@@ -123,7 +123,7 @@ export const Content = styled.div`
   @media (min-width: 576px) {
     :is(${ButtonStyled}) {
       svg {
-        display: ${({ $hasicon }) => 'none'};
+        display: 'none';
       }
       margin-left: 0;
     }

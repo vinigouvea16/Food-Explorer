@@ -113,7 +113,7 @@ function Dish() {
                     fill="white"
                   />
                 </svg>
-                <Button hasicon title={`incluir ∙ ${data.price}`} />
+                <Button title={`incluir ∙ ${data.price}`} />
               </div>
             </section>
           </Content>
