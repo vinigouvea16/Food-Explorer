@@ -12,6 +12,7 @@ function AuthProvider({ children }) {
           'Content-type': 'application/json',
           Accept: 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ email, password }),
       })
       if (!response.ok) {
