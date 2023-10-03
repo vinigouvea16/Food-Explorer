@@ -23,16 +23,12 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* margin: 24px 0 48px 54px; */
   }
   main {
-    /* grid-area: main; */
     margin: 0 auto;
     @media (max-width: 576px) {
       display: flex;
       flex-direction: column;
-      /* max-width: 576px; */
-      /* padding: 0 56px; */
     }
     a {
       position: relative;
@@ -93,7 +89,6 @@ export const Content = styled.div`
   }
   > section {
     max-width: 687px;
-    /* height: 204px; */
     padding-top: 30px;
     @media (max-width: 576px) {
       display: flex;
@@ -116,7 +111,6 @@ export const Content = styled.div`
     height: 48px;
     margin-left: 20px;
     @media (max-width: 576px) {
-      /* padding: 12px; */
       width: 300px;
     }
   }

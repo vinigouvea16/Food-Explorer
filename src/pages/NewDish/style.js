@@ -35,9 +35,7 @@ export const Form = styled.form`
   width: 100%;
   flex-direction: column;
   align-items: flex-end;
-  /* margin: 0 130px; */
   gap: 32px;
-  /* margin-right: 25px; */
   @media (max-width: 576px) {
     width: 100%;
     margin: 10px 32px;
@@ -140,7 +138,6 @@ export const Form = styled.form`
     justify-content: flex-start;
     width: 100%;
     background: #0d1d25;
-    /* padding: 4px; */
     border-radius: 8px;
     flex-wrap: wrap;
     margin: 0;
@@ -186,7 +183,6 @@ export const Content = styled.div`
         margin-left: 32px;
       }
       color: ${({ theme }) => theme.COLORS.LIGHT.L300};
-      /* margin: 0 0 32px 130px; */
       font-weight: 500;
       font-size: 32px;
       font-family: Poppins;
@@ -208,7 +204,6 @@ export const Content = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* padding-left: 124px; */
     margin: 40px 0 24px;
   }
 `

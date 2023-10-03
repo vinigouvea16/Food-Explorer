@@ -1,7 +1,7 @@
 import styled from 'styled-components'
+import logoadmin from '../../../assets/logoadmin.png'
 import { ButtonStyled } from '../Button/style'
 import { InputGroup } from '../Input/style'
-
 export const Container = styled.header`
   grid-area: header;
   height: 104px;
@@ -47,7 +47,7 @@ export const Logout = styled.button`
 `
 export const Brand = styled.div`
   color: ${({ theme }) => theme.COLORS.LIGHT.L100};
-  background-image: url('/assets/logoadmin.png');
+  background-image: url(${logoadmin});
   background-repeat: no-repeat;
   width: 197px;
   height: 38px;

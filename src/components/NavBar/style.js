@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import logo from '../../../assets/logo.png'
 export const Container = styled.header`
   grid-area: header;
   height: 104px;
@@ -52,7 +52,7 @@ export const Logout = styled.button`
 `
 export const Brand = styled.div`
   color: ${({ theme }) => theme.COLORS.LIGHT.L100};
-  background-image: url('/assets/logo.png');
+  background-image: url(${logo});
   background-repeat: no-repeat;
   width: 197px;
   height: 30px;

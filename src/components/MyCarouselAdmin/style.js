@@ -17,7 +17,6 @@ export const Container = styled.div`
   .splide__arrow {
     -ms-flex-align: center;
     align-items: center;
-    /* background: ${({ theme }) => theme.COLORS.GRADIENTS.G100}; */
     cursor: pointer;
     display: -ms-flexbox;
     display: flex;

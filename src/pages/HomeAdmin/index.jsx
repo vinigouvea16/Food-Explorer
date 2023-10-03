@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import homeimg from '../../../assets/homeimg.png'
 import { Footer } from '../../components/Footer'
 import { HeaderAdmin } from '../../components/HeaderAdmin'
 import { MyCarouselAdmin } from '../../components/MyCarouselAdmin'
@@ -6,12 +7,9 @@ import { SideMenu } from '../../components/SideMenu'
 import { useDebounce } from '../../hooks/useDebounce'
 import { api } from '../../services/api'
 import { Container, Content } from './style'
-
 function Home() {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [data, setData] = useState([])
-  // const [category, setCategory] = useState([])
-  // const params = useParams()
   const [search, setSearch] = useState('')
   const searchDebounce = useDebounce(search, 300)
   const [meals, setMeals] = useState([])
@@ -64,7 +62,7 @@ function Home() {
       />
       <Content>
         <div className="mainImg">
-          <img src="/assets/homeimg.png" alt="" />
+          <img src={homeimg} alt="" />
           <hgroup>
             <h2>Sabores Inigualáveis</h2>
             <p>Sinta o cuidado do preparo com ingredientes selecionados</p>

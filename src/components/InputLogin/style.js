@@ -6,7 +6,6 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 12px 14px; */
   background-color: ${({ theme }) => theme.COLORS.DARK.D900};
   color: ${({ theme }) => theme.COLORS.LIGHT.L500};
 
@@ -15,7 +14,6 @@ export const Container = styled.div`
   > input {
     height: 48px;
     width: 344px;
-    /* margin: 16px 99px 16px 0; */
     color: ${({ theme }) => theme.COLORS.LIGHT.L100};
     background: transparent;
     border: 0;

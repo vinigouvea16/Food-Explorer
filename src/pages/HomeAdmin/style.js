@@ -3,7 +3,6 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints'
 
 export const Container = styled.div`
   height: 100vh;
-  /* width: 1380px; */
   display: grid;
   grid-template-rows: 105px auto;
   grid-template-rows: auto 1fr;
@@ -16,29 +15,22 @@ export const Container = styled.div`
 
   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
     width: 100%;
-    /* margin: 0 auto; */
     grid-template-columns: auto;
     grid-template-rows: auto 1fr;
     grid-template-areas:
       'header'
       'content'
       'footer';
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: start; */
-    /* height: 100%; */
     overflow-x: hidden;
   }
   .mainImg {
     display: flex;
     align-items: center;
-    /* justify-content: center; */
     height: 260px;
     background: ${({ theme }) => theme.COLORS.GRADIENTS.G200};
     border-radius: 8px;
     z-index: 0;
     margin-top: 164px;
-    /* position: absolute; */
     @media (max-width: 576px) {
       width: 376px;
       height: 120px;

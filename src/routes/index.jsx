@@ -12,10 +12,8 @@ function Routes() {
         return <AdminRoutes />
       case USER_ROLE.CUSTOMER:
         return <CustomerRoutes />
-      // case USER_ROLE.GUEST:
-      //   return <GuestRoutes />;
-      // default:
-      //   return <GuestRoutes />;
+      default:
+        return <CustomerRoutes />
     }
   }
   return (

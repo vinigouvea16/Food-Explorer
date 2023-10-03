@@ -5,19 +5,6 @@ function AuthProvider({ children }) {
   const [data, setData] = useState({})
   async function logIn({ email, password }) {
     try {
-      // const url = `${import.meta.env.VITE_API_URL}/sessions`
-      // const response = await fetch(url, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-type': 'application/json',
-      //     Accept: 'application/json',
-      //   },
-      //   // credentials: 'include',
-      //   body: JSON.stringify({ email, password }),
-      // })
-      // if (!response.ok) {
-      //   throw new Error('Network response was not ok')
-      // }
       const response = await api.post(
         'sessions',
         { email, password },

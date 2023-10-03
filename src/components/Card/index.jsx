@@ -4,15 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { api } from '../../services/api'
 import { Button } from '../Button'
 import { Container, Heart } from './style'
-export function Card({
-  title,
-  description,
-  price,
-  id,
-  category,
-  image,
-  ...rest
-}) {
+export function Card({ title, description, price, id, image, ...rest }) {
   const [data, setData] = useState(null)
   const params = useParams()
 
@@ -20,40 +12,40 @@ export function Card({
   function handleDish(id) {
     navigate(`/dishes/${id}`)
   }
-  useEffect(() => {
-    async function fetchDish() {
-      try {
-        const url = `${import.meta.env.VITE_API_URL}/dishes/${params.id}` // Construct the full URL
-
-        const response = await fetch(url, {
-          method: 'GET',
-          credentials: 'include', // This is equivalent to Axios's withCredentials: true
-        })
-
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
-
-        const responseData = await response.json()
-        setData(responseData)
-      } catch (error) {
-        console.error('Error fetching dish data', error)
-      }
-    }
-    fetchDish()
-  }, [params.id])
-
   // useEffect(() => {
   //   async function fetchDish() {
   //     try {
-  //       const response = await api.get(`/dishes/${params.id}`)
-  //       setData(response.data)
+  //       const url = `${import.meta.env.VITE_API_URL}/dishes/${params.id}` // Construct the full URL
+
+  //       const response = await fetch(url, {
+  //         method: 'GET',
+  //         credentials: 'include', // This is equivalent to Axios's withCredentials: true
+  //       })
+
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok')
+  //       }
+
+  //       const responseData = await response.json()
+  //       setData(responseData)
   //     } catch (error) {
   //       console.error('Error fetching dish data', error)
   //     }
   //   }
   //   fetchDish()
   // }, [params.id])
+
+  useEffect(() => {
+    async function fetchDish() {
+      try {
+        const response = await api.get(`/dishes/${params.id}`)
+        setData(response.data)
+      } catch (error) {
+        console.error('Error fetching dish data', error)
+      }
+    }
+    fetchDish()
+  }, [params.id])
 
   return (
     <Container>

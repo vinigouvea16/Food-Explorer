@@ -28,14 +28,6 @@ function Dish() {
     fetchDish()
   }, [params.id])
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     const { data } = await api.get(`/dishes/${params.id}`)
-  //     setData(data)
-  //   }
-  //   getData()
-  // }, [])
-
   return (
     <Container>
       <SideMenu

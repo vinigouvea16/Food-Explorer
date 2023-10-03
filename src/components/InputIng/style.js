@@ -6,7 +6,6 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 12px 14px; */
   background-color: ${({ theme }) => theme.COLORS.DARK.D900};
   color: ${({ theme }) => theme.COLORS.LIGHT.L500};
   border-radius: 10px;
@@ -32,7 +31,6 @@ export const Container = styled.div`
   }
 
   > svg {
-    /* margin: 0 auto; */
     font-size: 24px;
     color: ${({ theme }) => theme.COLORS.LIGHT.L400};
   }

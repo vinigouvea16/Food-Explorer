@@ -5,7 +5,6 @@ import { Button } from '../../components/Button'
 import { useAuth } from '../../hooks/auth'
 import { Input } from '../Input'
 import { Brand, Container, Logout, Menu, Order } from './style'
-
 export function Header({ search, onSearch, onOpenMenu }) {
   const { logOut } = useAuth()
   const navigate = useNavigate()

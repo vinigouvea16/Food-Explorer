@@ -209,11 +209,7 @@ function NewDish() {
             />
           </div>
 
-          <Button
-            // loading
-            title="Salvar Alterações"
-            onClick={handleNewPlate}
-          />
+          <Button title="Salvar Alterações" onClick={handleNewPlate} />
         </Form>
       </Content>
       <Footer />

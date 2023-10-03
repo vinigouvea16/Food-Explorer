@@ -1,7 +1,6 @@
 import { Container, Content } from './style'
 // import {Button} from '../../components/Button'
 import { useCallback, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import homeimg from '../../../assets/homeimg.png'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
@@ -13,8 +12,6 @@ import { api } from '../../services/api'
 function Home() {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [data, setData] = useState([])
-  const [category, setCategory] = useState([])
-  const params = useParams()
   const [search, setSearch] = useState('')
   const searchDebounce = useDebounce(search, 300)
   const [meals, setMeals] = useState([])
@@ -73,10 +70,7 @@ function Home() {
             <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
           </hgroup>
         </div>
-        {/* {data.map((dish) => ( */}
-        <Section
-        // key={String(dish.id)} data={dish}
-        >
+        <Section>
           <div className="headercarousel">
             <h1>Refeições</h1>
             {meals.length > 0 && <MyCarousel data={meals} />}
@@ -92,7 +86,6 @@ function Home() {
             {drinks.length > 0 && <MyCarousel data={drinks} />}
           </div>
         </Section>
-        {/* ))} */}
       </Content>
       <Footer />
     </Container>

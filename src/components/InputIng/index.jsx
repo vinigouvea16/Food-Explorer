@@ -5,7 +5,6 @@ import { Container } from './style'
 export function InputIng({ type, placeholder, value, hasicon, ...rest }) {
   return (
     <Container $hasicon={hasicon}>
-      {/* {label} */}
       {hasicon && <FiSearch size={24} />}
       <input type={type} placeholder={placeholder} value={value} {...rest} />
     </Container>

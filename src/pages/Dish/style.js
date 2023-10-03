@@ -21,7 +21,6 @@ export const Container = styled.div`
       'header'
       'content'
       'footer';
-    /* height: 918px; */
     width: 100%;
     justify-content: center;
   }
@@ -39,13 +38,11 @@ export const Container = styled.div`
     margin: 24px 0 48px 115px;
   }
   main {
-    /* grid-area: main; */
     margin: 30px auto;
     @media (max-width: 576px) {
       display: flex;
       flex-direction: column;
       max-width: 576px;
-      /* padding: 0 56px; */
     }
     a {
       left: -70px;
@@ -122,7 +119,6 @@ export const Content = styled.div`
     height: 48px;
     margin-left: 20px;
     @media (max-width: 576px) {
-      /* padding: 12px; */
       width: 100%;
     }
   }

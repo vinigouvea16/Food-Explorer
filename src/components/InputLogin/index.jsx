@@ -13,7 +13,6 @@ export function InputLogin({
 }) {
   return (
     <Container $hasicon={hasicon}>
-      {/* {label} */}
       {hasicon && <FiSearch size={24} />}
       <input type={type} placeholder={placeholder} value={value} {...rest} />
     </Container>
