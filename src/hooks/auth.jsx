@@ -5,7 +5,7 @@ function AuthProvider({ children }) {
   const [data, setData] = useState({})
   async function logIn({ email, password }) {
     try {
-      const url = `${import.meta.env.VITE_API_URL}`
+      const url = `${import.meta.env.VITE_API_URL}/sessions`
       const response = await fetch(url, {
         method: 'POST',
         headers: {
