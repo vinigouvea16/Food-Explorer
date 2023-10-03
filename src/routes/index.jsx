@@ -13,7 +13,7 @@ function Routes() {
       case USER_ROLE.CUSTOMER:
         return <CustomerRoutes />
       default:
-        return <CustomerRoutes />
+        return <AuthRoutes />
     }
   }
   return (
