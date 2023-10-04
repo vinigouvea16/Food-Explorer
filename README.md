@@ -40,7 +40,7 @@ Sinta-se à vontade para usar estas contas de demonstração para explorar a nos
 
 Você pode experimentar a aplicação no ar através do seguinte link:
 
-[**Acessar o Food Explorer**](colar link aqui)
+[**Acessar o Food Explorer**](https://foodexplorervinigouvea.netlify.app/)
 ## Index
 
 - [Recursos](#recursos)
